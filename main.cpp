@@ -50,6 +50,6 @@ int main() {
     return 0;
 }
 // This code finds the minimum absolute difference between elements of two arrays a and b.
-//and this is zyad testing github
+//And this is zyad testing github
 // abdallah
 //seif
