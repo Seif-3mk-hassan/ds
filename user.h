@@ -26,7 +26,7 @@ public:
     bool addContact(const string& userId, const string& username);
     bool removeContact(const string& userId);
     Contact* findContact(const string& userId);
-   vector<Contact> getSortedContacts() const;
+    vector<Contact> getSortedContacts() const;
 
     // Message Operations
     void receiveMessage(const Message& message);
