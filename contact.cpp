@@ -1,21 +1,21 @@
 #include "Contact.h"
 class Contact {
     private:
-        std::string contactID;
-        std::vector<Message> messages;  
+        string contactID;
+        vector<Message> messages;  
         int messageCount;             
     
     public:
-        Contact(const std::string& id) : contactID(id), messageCount(0) {}
+        Contact(string& id) : contactID(id), messageCount(0) {}
     
-        void addMessage(const Message& msg) {
+        void addMessage(Message& msg) {
             messages.push_back(msg);
             messageCount++;
         }
     
-        int getMessageCount() const { return messageCount; }
+        int getMessageCount() { return messageCount; }
     
         
     
-        const std::vector<Message>& getMessages() const { return messages; }
+        vector<Message>& getMessages() { return messages; }
     };
