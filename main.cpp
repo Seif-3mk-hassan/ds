@@ -41,8 +41,4 @@ int main() {
     cout << "Hello World" << endl;
     return 0;
 }
-// This code finds the minimum absolute difference between elements of two arrays a and b.
-//And this is zyad testing github
-// abdallah
-//seif
-// omar
+
