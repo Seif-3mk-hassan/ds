@@ -1,0 +1,8 @@
+[
+{
+  "directory": "E:/ggggg/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe   -g -std=gnu++23 -o CMakeFiles\\DSproject.dir\\main.cpp.obj -c E:\\ggggg\\main.cpp",
+  "file": "E:/ggggg/main.cpp",
+  "output": "CMakeFiles/DSproject.dir/main.cpp.obj"
+}
+]
