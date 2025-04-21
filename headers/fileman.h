@@ -6,11 +6,11 @@
 
 using json = nlohmann::json;
 
-using namespace std ;
+using namespace std;
 
 class fileman {
 private:
-    vector<user> users;
+    vector<User> users;
 
 public:
     fileman() = default;
@@ -18,5 +18,6 @@ public:
     void readFromFile(const string& filename);
     void writeToFile(const string& filename) const;
 
-    vector<user>& getUsers();             
-    void addUser(const user& user);      }    
+    vector<User>& getUsers();             
+    void addUser(const User& user);    
+};    

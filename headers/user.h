@@ -4,8 +4,9 @@
 #include <map>
 //#include "message.h"       untill we create it
 //#include "contact.h"      untill we create it
-using namespace std ;
-class user {
+using namespace std;
+
+class User {
     private:
     string ID;
     string username;
@@ -13,11 +14,11 @@ class user {
     //map<string, Contact> contacts;
     //vector<Message> receivedMessages;
 public:
-    Constructors
+    // Constructors
     User() = default;
     User(const string& id, const string& uname, const string& pwd);
 
-    Getters
+    // Getters
     string getId() const;
     string getUsername() const;
     string getPassword() const;
