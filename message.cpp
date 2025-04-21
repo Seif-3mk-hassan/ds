@@ -6,9 +6,9 @@ class Message {
         string content;
     
     public:
-        Message(const string& id, const string& sender, const string& text)
+        Message(string& id, string& sender, string& text)
             : messageID(id), senderID(sender), content(text) {}
     
         // Getters
-        string getSenderID() const { return senderID; }
+        string getSenderID() { return senderID; }
     };
