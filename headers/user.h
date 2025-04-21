@@ -13,24 +13,24 @@ class user {
     //map<string, Contact> contacts;
     //vector<Message> receivedMessages;
 public:
-    // Constructors
-    //User() = default;
-    // User(const string& id, const string& uname, const string& pwd);
+    Constructors
+    User() = default;
+    User(const string& id, const string& uname, const string& pwd);
 
-    // Getters
-    // string getId() const;
-    // string getUsername() const;
-    // string getPassword() const;
+    Getters
+    string getId() const;
+    string getUsername() const;
+    string getPassword() const;
 
-    // // Contact Operations
-    // bool addContact(const string& userId, const string& username);
-    // bool removeContact(const string& userId);
-    // Contact* findContact(const string& userId);
-    // vector<Contact> getSortedContacts() const;
+    // Contact Operations
+    bool addContact(const string& userId, const string& username);
+    bool removeContact(const string& userId);
+    Contact* findContact(const string& userId);
+    vector<Contact> getSortedContacts() const;
 
-    // // Message Operations
-    // void receiveMessage(const Message& message);
-    // const vector<Message>& getReceivedMessages() const;
+    // Message Operations
+    void receiveMessage(const Message& message);
+    const vector<Message>& getReceivedMessages() const;
 
     // // JSON Operations
     // json toJson() const;

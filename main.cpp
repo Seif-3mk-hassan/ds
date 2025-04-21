@@ -26,6 +26,14 @@ int main() {
     cin.tie(NULL);
     cout.tie(NULL);
 
+    fileman fileManager;
+fileManager.readFromFile("users.json");
+
+user newUser("001", "ahmed", "1234");
+fileManager.addUser(newUser);
+
+fileManager.writeToFile("users.json");
+
     cout << "Hello World" << endl;
     return 0;
 }

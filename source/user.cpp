@@ -3,50 +3,50 @@ using namespace std ;
 
 
 // Constructor
-// user::User(const string& id, const string& uname, const string& pwd)
-//     : ID(id), username(uname), password(pwd) {}
+user::User(const string& id, const string& uname, const string& pwd)
+    : ID(id), username(uname), password(pwd) {}
 
-// string user::getId() const { return ID; }
-// string user::getUsername() const { return username; }
-// string user::getPassword() const { return password; }
+string user::getId() const { return ID; }
+string user::getUsername() const { return username; }
+string user::getPassword() const { return password; }
 
-// bool user::addContact(const string& userId, const string& username) {
-//     if (contacts.find(userId) == contacts.end()) {
-//         contacts[userId] = Contact(userId, username);
-//         return true;
-//     }
-//     return false;   
-// }
+bool user::addContact(const string& userId) {
+    if (contacts.find(userId) == contacts.end()) {
+        contacts[userId] = Contact(userId, username);
+        return true;
+    }
+    return false;   
+}
 
-// bool user::removeContact(const string& userId) {
-//     return contacts.erase(userId) > 0;
-// }
+bool user::removeContact(const string& userId) {
+    return contacts.erase(userId) > 0;
+}
 
-// Contact* user::findContact(const string& userId) {
-//     auto it = contacts.find(userId);
-//     return it != contacts.end() ? &it->second : nullptr;
-// }
+Contact* user::findContact(const string& userId) {
+    auto it = contacts.find(userId);
+    return it != contacts.end() ? &it->second : nullptr;
+}
 
-// vector<Contact> user::getSortedContacts() const {
-//     vector<Contact> sortedContacts;
-//     for (const auto& pair : contacts) {
-//         sortedContacts.push_back(pair.second);
-//     }
-//     sort(sortedContacts.begin(), sortedContacts.end());
-//     return sortedContacts;
-// }
+vector<Contact> user::getSortedContacts() const {
+    vector<Contact> sortedContacts;
+    for (const auto& pair : contacts) {
+        sortedContacts.push_back(pair.second);
+    }
+    sort(sortedContacts.begin(), sortedContacts.end());
+    return sortedContacts;
+}
 
-// void user::receiveMessage(const Message& message) {
-//     receivedMessages.push_back(message);
-//     auto contact = findContact(message.getSenderId());
-//     if (contact) {
-//         contact->addMessage(message);
-//     }
-// }
+void user::receiveMessage(const Message& message) {
+    receivedMessages.push_back(message);
+    auto contact = findContact(message.getSenderId());
+    if (contact) {
+        contact->addMessage(message);
+    }
+}
 
-// const vector<Message>& user::getReceivedMessages() const {
-//     return receivedMessages;
-// }
+const vector<Message>& user::getReceivedMessages() const {
+    return receivedMessages;
+}
 
 // // ===========================
 // // JSON FUNCTIONS
