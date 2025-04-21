@@ -22,7 +22,6 @@ using namespace std;
 #define ld long double
 #define vi vector<int>
 
-
 int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
@@ -38,10 +37,20 @@ int main() {
         cin >> b[i];
     }
 
+    // Sort both arrays
+    sort(a.begin(), a.end());
+    sort(b.begin(), b.end());
+
+    int i = 0, j = 0;
     int ans = LLONG_MAX;
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < m; j++) {
-            ans = min(ans, abs(a[i] - b[j]));
+
+    // Two-pointer technique
+    while (i < n && j < m) {
+        ans = min(ans, abs(a[i] - b[j]));
+        if (a[i] < b[j]) {
+            i++;
+        } else {
+            j++;
         }
     }
 
