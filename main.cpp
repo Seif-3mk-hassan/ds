@@ -14,16 +14,19 @@
 
 using namespace std;
 
-#define int long long
+#define ll long long
 #define endl "\n"
 #define pb push_back
 #define mp make_pair
-#define ll long long
 #define ld long double
-#define vi vector<int>
+#define vi vector<ll>
 
 int main() {
-    
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+
+    cout << "Hello World" << endl;
     return 0;
 }
 // This code finds the minimum absolute difference between elements of two arrays a and b.
