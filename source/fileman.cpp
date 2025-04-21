@@ -7,7 +7,7 @@ using namespace std ;
 void fileman::readFromFile(const string& filename) {
     ifstream inFile(filename);
     if (!inFile) {
-        cerr << " Could not open file for reading: " << filename << endl;
+        cout << " Could not open file for reading: " << filename << endl;
         return;
     }
 
@@ -25,7 +25,7 @@ void fileman::readFromFile(const string& filename) {
 void fileman::writeToFile(const string& filename) const {
     ofstream outFile(filename);
     if (!outFile) {
-        cerr << " Could not open file for writing: " << filename << endl;
+        cout << " Could not open file for writing: " << filename << endl;
         return;
     }
 
