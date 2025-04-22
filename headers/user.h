@@ -16,6 +16,8 @@ class User {
     string password;
     map<string, Contact> contacts;//contacts[id]= con
     vector<Message> receivedMessages;
+    queue<Message> favoriteMessages;//imp
+
 public:
     // Constructors
     User() = default;
@@ -35,8 +37,7 @@ public:
     // Message Operations
     void receiveMessage(const Message& message);
     const vector<Message>& getReceivedMessages() const;
-    //favourites
-    queue<Message> favoriteMessages;
+    //favourites    
     void addMessageToFavorites(Message);
     void removeOldestFavorite();
     void viewFavoriteMessages() const;

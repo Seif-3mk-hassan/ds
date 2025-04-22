@@ -10,31 +10,31 @@ string User::getId() const { return ID; }
 string User::getUsername() const { return username; }
 string User::getPassword() const { return password; }
 
-bool User::addContact(const string& userId) {
-    if (contacts.find(userId) == contacts.end()) {
-        contacts[userId] = Contact(userId);
-        return true;
-    }
-    return false;   
-}
+// bool User::addContact(const string& userId) {
+//     if (contacts.find(userId) == contacts.end()) {
+//         contacts[userId] = Contact(userId);
+//         return true;
+//     }
+//     return false;   
+// }
 
-bool User::removeContact(const string& userId) {
-    return contacts.erase(userId) > 0;
-}
+// bool User::removeContact(const string& userId) {
+//     return contacts.erase(userId) > 0;
+// }
 
-Contact* User::findContact(const string& userId) {
-    auto it = contacts.find(userId);
-    return it != contacts.end() ? &it->second : nullptr;
-}
+// Contact* User::findContact(const string& userId) {
+//     auto it = contacts.find(userId);
+//     return it != contacts.end() ? &it->second : nullptr;
+// }
 
-vector<Contact> User::getSortedContacts() const {
-    vector<Contact> sortedContacts;
-    for (const auto& pair : contacts) {
-        sortedContacts.push_back(pair.second);
-    }
-    sort(sortedContacts.begin(), sortedContacts.end());
-    return sortedContacts;
-}
+// vector<Contact> User::getSortedContacts() const { 
+//     vector<Contact> sortedContacts;
+//     for (const auto& pair : contacts) {
+//         sortedContacts.push_back(pair.second);
+//     }
+//     sort(sortedContacts.begin(), sortedContacts.end());
+//     return sortedContacts;
+// }
 
 void User::receiveMessage(const Message& message) {
     receivedMessages.push_back(message);
@@ -51,23 +51,21 @@ const vector<Message>& User::getReceivedMessages() const {
 //==========dealing with favourites==========
 void User::addMessageToFavorites(Message msg) {
     favoriteMessages.push(msg); 
-cout <<"message added to favourites";
 }
 
 void User::removeOldestFavorite() {
     if (!favoriteMessages.empty()) {
         favoriteMessages.pop();
-        cout << "oldest favorite message removed\n";
     } 
-    else {cout << "no favorite messages to remove\n";}
+    else {cout << "no favorite messages to remove\n";}//handling in another time
 }
 
 void User::viewFavoriteMessages() const {
     if (favoriteMessages.empty()) {
-        cout << "No favorite messages.\n";
+        cout << "No favorite messages.\n";//handling in another time
         return;
     }
-queue<Message> copy = favoriteMessages;
+queue<Message> copy = favoriteMessages; //  3 4 5
 while (!copy.empty()) {
     cout << copy.front().content << "\n";
     copy.pop();}
