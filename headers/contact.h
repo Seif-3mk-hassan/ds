@@ -6,9 +6,11 @@ using namespace std;
 class Contact {
     public:
     Contact();
-    private:
+    Contact(const string& id, string& username);
+    public:
     string contactID;
     Message messages;
     int messageCount;
-    void addMessage();
+    void addMessage(Message);
+    int getMessageCount();
 };

@@ -10,5 +10,6 @@ class Message {
             : messageID(id), senderID(sender), content(text) {}
     
         // Getters
-        string getSenderID() { return senderID; }
+        string getSenderId() { return senderID; }
+        
     };
