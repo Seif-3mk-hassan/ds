@@ -14,7 +14,7 @@ class User {
     string ID;
     string username;
     string password;
-    map<string, Contact> contacts;
+    map<string, Contact> contacts;//contacts[id]= con
     vector<Message> receivedMessages;
 public:
     // Constructors
@@ -28,7 +28,6 @@ public:
 
     // Contact Operations
     bool addContact(const string& userId);
-    bool addContact(const string& userId, const string& username);
     bool removeContact(const string& userId);
     Contact* findContact(const string& userId);
     vector<Contact> getSortedContacts() const;

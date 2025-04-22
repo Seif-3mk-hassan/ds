@@ -1,4 +1,4 @@
-#include "User.h"
+#include "user.h"
 using namespace std ;
 
 
@@ -12,7 +12,7 @@ string User::getPassword() const { return password; }
 
 bool User::addContact(const string& userId) {
     if (contacts.find(userId) == contacts.end()) {
-        contacts[userId] = Contact(userId, username);
+        contacts[userId] = Contact(userId);
         return true;
     }
     return false;   
