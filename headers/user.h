@@ -1,9 +1,12 @@
 # pragma once 
 #include <iostream>
+#include <algorithm>
 #include <vector>
 #include <map>
-//#include "message.h"       untill we create it
-//#include "contact.h"      untill we create it
+#include <stack>
+#include <queue>
+#include "Message.h"       
+#include "Contact.h"      
 using namespace std;
 
 class User {
@@ -11,8 +14,11 @@ class User {
     string ID;
     string username;
     string password;
-    //map<string, Contact> contacts;
-    //vector<Message> receivedMessages;
+    map<string, Contact> contacts;//contacts[id]= con
+    vector<Message> receivedMessages;
+    stack<Message> sentMessages;
+    queue<Message> favoriteMessages;//imp
+
 public:
     // Constructors
     User() = default;
@@ -24,7 +30,7 @@ public:
     string getPassword() const;
 
     // Contact Operations
-    bool addContact(const string& userId, const string& username);
+    bool addContact(const string& userId);
     bool removeContact(const string& userId);
     Contact* findContact(const string& userId);
     vector<Contact> getSortedContacts() const;
@@ -32,6 +38,14 @@ public:
     // Message Operations
     void receiveMessage(const Message& message);
     const vector<Message>& getReceivedMessages() const;
+    void sendMessage(string content, Contact reciever);
+    void undoMessage();
+    void viewMessages();
+    void viewMessageByContact(string );
+    //favourites    
+    void addMessageToFavorites(Message);
+    void removeOldestFavorite();
+    void viewFavoriteMessages() const;
 
     // // JSON Operations
     // json toJson() const;
