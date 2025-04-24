@@ -1,4 +1,5 @@
 #include "user.h"
+#include "Contact.h"
 using namespace std;
 
 

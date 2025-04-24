@@ -6,6 +6,7 @@ using namespace std;
 class Contact {
     public:
     Contact();
+    Contact(const string& id);
     Contact(const string& id, string& username);
     public:
     string contactID;
