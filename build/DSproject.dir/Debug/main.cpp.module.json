@@ -1,0 +1,14 @@
+{
+    "version": 1,
+    "revision": 0,
+    "rules": [
+        {
+            "primary-output": "DSproject.dir\\Debug\\main.obj",
+            "outputs": [
+                "D:\\ggggg\\build\\DSproject.dir\\Debug\\vc143.pdb",
+                "DSproject.dir\\Debug\\"
+            ],
+            "requires": []
+        }
+    ]
+}

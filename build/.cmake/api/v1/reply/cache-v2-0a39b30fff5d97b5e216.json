@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "e:/ggggg/build"
+			"value" : "d:/ggggg/build"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -587,7 +587,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "E:/ggggg/build/CMakeFiles/pkgRedirects"
+			"value" : "D:/ggggg/build/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -659,7 +659,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "E:/ggggg"
+			"value" : "D:/ggggg"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -1307,7 +1307,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "E:/ggggg/build"
+			"value" : "D:/ggggg/build"
 		},
 		{
 			"name" : "DSproject_IS_TOP_LEVEL",
@@ -1331,7 +1331,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "E:/ggggg"
+			"value" : "D:/ggggg"
 		}
 	],
 	"kind" : "cache",

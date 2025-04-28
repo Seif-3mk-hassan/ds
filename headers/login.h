@@ -2,19 +2,15 @@
 // Created by user on 4/21/2025.
 //
 
-#ifndef LOGIN_H
-#define LOGIN_H
+#include "system_manger.h"
 
-
-
-class login {
+class login : public system_manager {
 
 public:
-    bool registerr();
-    bool is_logged_in();
+    void registerr();
+    User is_logged_in();
     void mainMenu();
+
 };
 
 
-
-#endif //LOGIN_H

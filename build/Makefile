@@ -56,10 +56,10 @@ RM = "C:\Program Files\CMake\bin\cmake.exe" -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = E:\ggggg
+CMAKE_SOURCE_DIR = D:\ggggg
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = E:\ggggg\build
+CMAKE_BINARY_DIR = D:\ggggg\build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -86,9 +86,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start E:\ggggg\build\CMakeFiles E:\ggggg\build\\CMakeFiles\progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\ggggg\build\CMakeFiles D:\ggggg\build\\CMakeFiles\progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start E:\ggggg\build\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\ggggg\build\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -152,6 +152,126 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\DSproject.dir\build.make CMakeFiles/DSproject.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+source/contact.obj: source/contact.cpp.obj
+.PHONY : source/contact.obj
+
+# target to build an object file
+source/contact.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DSproject.dir\build.make CMakeFiles/DSproject.dir/source/contact.cpp.obj
+.PHONY : source/contact.cpp.obj
+
+source/contact.i: source/contact.cpp.i
+.PHONY : source/contact.i
+
+# target to preprocess a source file
+source/contact.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DSproject.dir\build.make CMakeFiles/DSproject.dir/source/contact.cpp.i
+.PHONY : source/contact.cpp.i
+
+source/contact.s: source/contact.cpp.s
+.PHONY : source/contact.s
+
+# target to generate assembly for a file
+source/contact.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DSproject.dir\build.make CMakeFiles/DSproject.dir/source/contact.cpp.s
+.PHONY : source/contact.cpp.s
+
+source/login.obj: source/login.cpp.obj
+.PHONY : source/login.obj
+
+# target to build an object file
+source/login.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DSproject.dir\build.make CMakeFiles/DSproject.dir/source/login.cpp.obj
+.PHONY : source/login.cpp.obj
+
+source/login.i: source/login.cpp.i
+.PHONY : source/login.i
+
+# target to preprocess a source file
+source/login.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DSproject.dir\build.make CMakeFiles/DSproject.dir/source/login.cpp.i
+.PHONY : source/login.cpp.i
+
+source/login.s: source/login.cpp.s
+.PHONY : source/login.s
+
+# target to generate assembly for a file
+source/login.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DSproject.dir\build.make CMakeFiles/DSproject.dir/source/login.cpp.s
+.PHONY : source/login.cpp.s
+
+source/message.obj: source/message.cpp.obj
+.PHONY : source/message.obj
+
+# target to build an object file
+source/message.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DSproject.dir\build.make CMakeFiles/DSproject.dir/source/message.cpp.obj
+.PHONY : source/message.cpp.obj
+
+source/message.i: source/message.cpp.i
+.PHONY : source/message.i
+
+# target to preprocess a source file
+source/message.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DSproject.dir\build.make CMakeFiles/DSproject.dir/source/message.cpp.i
+.PHONY : source/message.cpp.i
+
+source/message.s: source/message.cpp.s
+.PHONY : source/message.s
+
+# target to generate assembly for a file
+source/message.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DSproject.dir\build.make CMakeFiles/DSproject.dir/source/message.cpp.s
+.PHONY : source/message.cpp.s
+
+source/system_manger.obj: source/system_manger.cpp.obj
+.PHONY : source/system_manger.obj
+
+# target to build an object file
+source/system_manger.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DSproject.dir\build.make CMakeFiles/DSproject.dir/source/system_manger.cpp.obj
+.PHONY : source/system_manger.cpp.obj
+
+source/system_manger.i: source/system_manger.cpp.i
+.PHONY : source/system_manger.i
+
+# target to preprocess a source file
+source/system_manger.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DSproject.dir\build.make CMakeFiles/DSproject.dir/source/system_manger.cpp.i
+.PHONY : source/system_manger.cpp.i
+
+source/system_manger.s: source/system_manger.cpp.s
+.PHONY : source/system_manger.s
+
+# target to generate assembly for a file
+source/system_manger.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DSproject.dir\build.make CMakeFiles/DSproject.dir/source/system_manger.cpp.s
+.PHONY : source/system_manger.cpp.s
+
+source/user.obj: source/user.cpp.obj
+.PHONY : source/user.obj
+
+# target to build an object file
+source/user.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DSproject.dir\build.make CMakeFiles/DSproject.dir/source/user.cpp.obj
+.PHONY : source/user.cpp.obj
+
+source/user.i: source/user.cpp.i
+.PHONY : source/user.i
+
+# target to preprocess a source file
+source/user.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DSproject.dir\build.make CMakeFiles/DSproject.dir/source/user.cpp.i
+.PHONY : source/user.cpp.i
+
+source/user.s: source/user.cpp.s
+.PHONY : source/user.s
+
+# target to generate assembly for a file
+source/user.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\DSproject.dir\build.make CMakeFiles/DSproject.dir/source/user.cpp.s
+.PHONY : source/user.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -164,6 +284,21 @@ help:
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
+	@echo ... source/contact.obj
+	@echo ... source/contact.i
+	@echo ... source/contact.s
+	@echo ... source/login.obj
+	@echo ... source/login.i
+	@echo ... source/login.s
+	@echo ... source/message.obj
+	@echo ... source/message.i
+	@echo ... source/message.s
+	@echo ... source/system_manger.obj
+	@echo ... source/system_manger.i
+	@echo ... source/system_manger.s
+	@echo ... source/user.obj
+	@echo ... source/user.i
+	@echo ... source/user.s
 .PHONY : help
 
 

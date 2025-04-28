@@ -1,8 +1,11 @@
+#pragma once
 #include <iostream>
 #include <string>
 #include <vector>
-#include "Message.h"
 using namespace std;
+
+class Message; // Forward declaration
+
 class Contact {
     public:
     Contact();
@@ -10,7 +13,7 @@ class Contact {
     Contact(const string& id, string& username);
     public:
     string contactID;
-    Message messages;
+    vector<Message> messages;
     int messageCount;
     void addMessage(Message);
     int getMessageCount();

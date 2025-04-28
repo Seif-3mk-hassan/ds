@@ -52,10 +52,10 @@ RM = "C:\Program Files\CMake\bin\cmake.exe" -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = E:\ggggg
+CMAKE_SOURCE_DIR = D:\ggggg
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = E:\ggggg\build
+CMAKE_BINARY_DIR = D:\ggggg\build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/DSproject.dir/depend.make
@@ -72,32 +72,118 @@ CMakeFiles/DSproject.dir/codegen:
 .PHONY : CMakeFiles/DSproject.dir/codegen
 
 CMakeFiles/DSproject.dir/main.cpp.obj: CMakeFiles/DSproject.dir/flags.make
-CMakeFiles/DSproject.dir/main.cpp.obj: E:/ggggg/main.cpp
+CMakeFiles/DSproject.dir/main.cpp.obj: CMakeFiles/DSproject.dir/includes_CXX.rsp
+CMakeFiles/DSproject.dir/main.cpp.obj: D:/ggggg/main.cpp
 CMakeFiles/DSproject.dir/main.cpp.obj: CMakeFiles/DSproject.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=E:\ggggg\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/DSproject.dir/main.cpp.obj"
-	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/DSproject.dir/main.cpp.obj -MF CMakeFiles\DSproject.dir\main.cpp.obj.d -o CMakeFiles\DSproject.dir\main.cpp.obj -c E:\ggggg\main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\ggggg\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/DSproject.dir/main.cpp.obj"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/DSproject.dir/main.cpp.obj -MF CMakeFiles\DSproject.dir\main.cpp.obj.d -o CMakeFiles\DSproject.dir\main.cpp.obj -c D:\ggggg\main.cpp
 
 CMakeFiles/DSproject.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/DSproject.dir/main.cpp.i"
-	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E E:\ggggg\main.cpp > CMakeFiles\DSproject.dir\main.cpp.i
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\ggggg\main.cpp > CMakeFiles\DSproject.dir\main.cpp.i
 
 CMakeFiles/DSproject.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/DSproject.dir/main.cpp.s"
-	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S E:\ggggg\main.cpp -o CMakeFiles\DSproject.dir\main.cpp.s
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\ggggg\main.cpp -o CMakeFiles\DSproject.dir\main.cpp.s
+
+CMakeFiles/DSproject.dir/source/contact.cpp.obj: CMakeFiles/DSproject.dir/flags.make
+CMakeFiles/DSproject.dir/source/contact.cpp.obj: CMakeFiles/DSproject.dir/includes_CXX.rsp
+CMakeFiles/DSproject.dir/source/contact.cpp.obj: D:/ggggg/source/contact.cpp
+CMakeFiles/DSproject.dir/source/contact.cpp.obj: CMakeFiles/DSproject.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\ggggg\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/DSproject.dir/source/contact.cpp.obj"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/DSproject.dir/source/contact.cpp.obj -MF CMakeFiles\DSproject.dir\source\contact.cpp.obj.d -o CMakeFiles\DSproject.dir\source\contact.cpp.obj -c D:\ggggg\source\contact.cpp
+
+CMakeFiles/DSproject.dir/source/contact.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/DSproject.dir/source/contact.cpp.i"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\ggggg\source\contact.cpp > CMakeFiles\DSproject.dir\source\contact.cpp.i
+
+CMakeFiles/DSproject.dir/source/contact.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/DSproject.dir/source/contact.cpp.s"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\ggggg\source\contact.cpp -o CMakeFiles\DSproject.dir\source\contact.cpp.s
+
+CMakeFiles/DSproject.dir/source/login.cpp.obj: CMakeFiles/DSproject.dir/flags.make
+CMakeFiles/DSproject.dir/source/login.cpp.obj: CMakeFiles/DSproject.dir/includes_CXX.rsp
+CMakeFiles/DSproject.dir/source/login.cpp.obj: D:/ggggg/source/login.cpp
+CMakeFiles/DSproject.dir/source/login.cpp.obj: CMakeFiles/DSproject.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\ggggg\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/DSproject.dir/source/login.cpp.obj"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/DSproject.dir/source/login.cpp.obj -MF CMakeFiles\DSproject.dir\source\login.cpp.obj.d -o CMakeFiles\DSproject.dir\source\login.cpp.obj -c D:\ggggg\source\login.cpp
+
+CMakeFiles/DSproject.dir/source/login.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/DSproject.dir/source/login.cpp.i"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\ggggg\source\login.cpp > CMakeFiles\DSproject.dir\source\login.cpp.i
+
+CMakeFiles/DSproject.dir/source/login.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/DSproject.dir/source/login.cpp.s"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\ggggg\source\login.cpp -o CMakeFiles\DSproject.dir\source\login.cpp.s
+
+CMakeFiles/DSproject.dir/source/message.cpp.obj: CMakeFiles/DSproject.dir/flags.make
+CMakeFiles/DSproject.dir/source/message.cpp.obj: CMakeFiles/DSproject.dir/includes_CXX.rsp
+CMakeFiles/DSproject.dir/source/message.cpp.obj: D:/ggggg/source/message.cpp
+CMakeFiles/DSproject.dir/source/message.cpp.obj: CMakeFiles/DSproject.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\ggggg\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/DSproject.dir/source/message.cpp.obj"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/DSproject.dir/source/message.cpp.obj -MF CMakeFiles\DSproject.dir\source\message.cpp.obj.d -o CMakeFiles\DSproject.dir\source\message.cpp.obj -c D:\ggggg\source\message.cpp
+
+CMakeFiles/DSproject.dir/source/message.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/DSproject.dir/source/message.cpp.i"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\ggggg\source\message.cpp > CMakeFiles\DSproject.dir\source\message.cpp.i
+
+CMakeFiles/DSproject.dir/source/message.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/DSproject.dir/source/message.cpp.s"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\ggggg\source\message.cpp -o CMakeFiles\DSproject.dir\source\message.cpp.s
+
+CMakeFiles/DSproject.dir/source/system_manger.cpp.obj: CMakeFiles/DSproject.dir/flags.make
+CMakeFiles/DSproject.dir/source/system_manger.cpp.obj: CMakeFiles/DSproject.dir/includes_CXX.rsp
+CMakeFiles/DSproject.dir/source/system_manger.cpp.obj: D:/ggggg/source/system_manger.cpp
+CMakeFiles/DSproject.dir/source/system_manger.cpp.obj: CMakeFiles/DSproject.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\ggggg\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/DSproject.dir/source/system_manger.cpp.obj"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/DSproject.dir/source/system_manger.cpp.obj -MF CMakeFiles\DSproject.dir\source\system_manger.cpp.obj.d -o CMakeFiles\DSproject.dir\source\system_manger.cpp.obj -c D:\ggggg\source\system_manger.cpp
+
+CMakeFiles/DSproject.dir/source/system_manger.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/DSproject.dir/source/system_manger.cpp.i"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\ggggg\source\system_manger.cpp > CMakeFiles\DSproject.dir\source\system_manger.cpp.i
+
+CMakeFiles/DSproject.dir/source/system_manger.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/DSproject.dir/source/system_manger.cpp.s"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\ggggg\source\system_manger.cpp -o CMakeFiles\DSproject.dir\source\system_manger.cpp.s
+
+CMakeFiles/DSproject.dir/source/user.cpp.obj: CMakeFiles/DSproject.dir/flags.make
+CMakeFiles/DSproject.dir/source/user.cpp.obj: CMakeFiles/DSproject.dir/includes_CXX.rsp
+CMakeFiles/DSproject.dir/source/user.cpp.obj: D:/ggggg/source/user.cpp
+CMakeFiles/DSproject.dir/source/user.cpp.obj: CMakeFiles/DSproject.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\ggggg\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/DSproject.dir/source/user.cpp.obj"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/DSproject.dir/source/user.cpp.obj -MF CMakeFiles\DSproject.dir\source\user.cpp.obj.d -o CMakeFiles\DSproject.dir\source\user.cpp.obj -c D:\ggggg\source\user.cpp
+
+CMakeFiles/DSproject.dir/source/user.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/DSproject.dir/source/user.cpp.i"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\ggggg\source\user.cpp > CMakeFiles\DSproject.dir\source\user.cpp.i
+
+CMakeFiles/DSproject.dir/source/user.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/DSproject.dir/source/user.cpp.s"
+	C:\msys64\ucrt64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\ggggg\source\user.cpp -o CMakeFiles\DSproject.dir\source\user.cpp.s
 
 # Object files for target DSproject
 DSproject_OBJECTS = \
-"CMakeFiles/DSproject.dir/main.cpp.obj"
+"CMakeFiles/DSproject.dir/main.cpp.obj" \
+"CMakeFiles/DSproject.dir/source/contact.cpp.obj" \
+"CMakeFiles/DSproject.dir/source/login.cpp.obj" \
+"CMakeFiles/DSproject.dir/source/message.cpp.obj" \
+"CMakeFiles/DSproject.dir/source/system_manger.cpp.obj" \
+"CMakeFiles/DSproject.dir/source/user.cpp.obj"
 
 # External object files for target DSproject
 DSproject_EXTERNAL_OBJECTS =
 
 DSproject.exe: CMakeFiles/DSproject.dir/main.cpp.obj
+DSproject.exe: CMakeFiles/DSproject.dir/source/contact.cpp.obj
+DSproject.exe: CMakeFiles/DSproject.dir/source/login.cpp.obj
+DSproject.exe: CMakeFiles/DSproject.dir/source/message.cpp.obj
+DSproject.exe: CMakeFiles/DSproject.dir/source/system_manger.cpp.obj
+DSproject.exe: CMakeFiles/DSproject.dir/source/user.cpp.obj
 DSproject.exe: CMakeFiles/DSproject.dir/build.make
 DSproject.exe: CMakeFiles/DSproject.dir/linkLibs.rsp
 DSproject.exe: CMakeFiles/DSproject.dir/objects1.rsp
 DSproject.exe: CMakeFiles/DSproject.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=E:\ggggg\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable DSproject.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=D:\ggggg\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable DSproject.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\DSproject.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -109,6 +195,6 @@ CMakeFiles/DSproject.dir/clean:
 .PHONY : CMakeFiles/DSproject.dir/clean
 
 CMakeFiles/DSproject.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" E:\ggggg E:\ggggg E:\ggggg\build E:\ggggg\build E:\ggggg\build\CMakeFiles\DSproject.dir\DependInfo.cmake "--color=$(COLOR)"
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" D:\ggggg D:\ggggg D:\ggggg\build D:\ggggg\build D:\ggggg\build\CMakeFiles\DSproject.dir\DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/DSproject.dir/depend
 

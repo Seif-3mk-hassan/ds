@@ -12,10 +12,6 @@
 #include<deque>
 #include<string>
 
-#include "lib/json.hpp"
-#include "headers/user.h"
-#include "headers/fileman.h"
-
 using namespace std;
 
 #define ll long long
@@ -30,15 +26,8 @@ int main() {
     cin.tie(NULL);
     cout.tie(NULL);
 
-    fileman fileManager;
-    fileManager.readFromFile("users.json");
-
-    User newUser("001", "ahmed", "1234");
-    fileManager.addUser(newUser);
-
-    fileManager.writeToFile("users.json");
-
     cout << "Hello World" << endl;
+    
     return 0;
 }
 
