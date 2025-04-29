@@ -7,6 +7,9 @@
 #include <queue>
 #include "Message.h"       
 #include "Contact.h"      
+#include "lib/json.hpp"
+
+using json = nlohmann::json;
 using namespace std;
 
 class User {
@@ -14,10 +17,10 @@ class User {
     string ID;
     string username;
     string password;
-    map<string, Contact> contacts;//contacts[id]= con
+    map<string, Contact> contacts;
     vector<Message> receivedMessages;
     stack<Message> sentMessages;
-    queue<Message> favoriteMessages;//imp
+    queue<Message> favoriteMessages;
 
 public:
     // Constructors
@@ -47,11 +50,5 @@ public:
     void removeOldestFavorite();
     void viewFavoriteMessages() const;
 
-    // // JSON Operations
-    // json toJson() const;
-    // void fromJson(const json& j);
 
-    // // File save/load
-    // static void saveUserToFile(const User& user, const string& filename);
-    // static User loadUserFromFile(const string& filename);
 };

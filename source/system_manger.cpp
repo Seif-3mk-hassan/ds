@@ -1,7 +1,10 @@
 #include "../headers/system_manger.h"
-#include "json.hpp"
+#include "../lib/json.hpp"
 #include <sstream>
 #include <iostream>
+#include <fstream>
+
+using json = nlohmann::json;
 
 int system_manager::id_counter = 0;
 
@@ -54,3 +57,16 @@ system_manager::login_status system_manager::is_login(string username, string pa
 unordered_map<string,User>& system_manager::get_user_by_id() {
     return use_by_id;
 }
+
+
+// void system_manager::saveUsersToFile(const std::string& filename) {
+//     // Create a JSON object to store all users
+//     nlohmann::json j;
+//     // Iterate through all users and convert each to JSON
+//     for (const auto& pair : use_by_id) {
+//         j[pair.first] = pair.second.toJson(); // Store user JSON with ID as key
+//     }
+//     // Open output file and write formatted JSON with 4 space indentation
+//     std::ofstream file(filename);
+//     file << j.dump(4);
+// }

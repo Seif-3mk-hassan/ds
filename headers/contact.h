@@ -2,7 +2,9 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include "lib/json.hpp"
 using namespace std;
+using json = nlohmann::json;
 
 class Message; // Forward declaration
 
@@ -17,4 +19,5 @@ class Contact {
     int messageCount;
     void addMessage(Message);
     int getMessageCount();
+    json toJson() const;
 };

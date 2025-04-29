@@ -1,5 +1,5 @@
 #pragma once
-#include "json.hpp"
+#include "../lib/json.hpp"
 #include<iostream>
 #include<fstream>
 #include<unordered_map>
@@ -30,4 +30,6 @@ public:
     login_status is_login(string username, string password);
 
     void addUser(string username, string password);
+
+    void saveUsersToFile(const std::string& filename);
 };

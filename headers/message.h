@@ -1,7 +1,9 @@
 #pragma once
 #include <iostream>
 #include <string>
+#include "lib/json.hpp"
 using namespace std;
+using json = nlohmann::json;
 
 class Message {
     public:
@@ -13,5 +15,6 @@ class Message {
     Message();
     bool isFavorite();
     string getSenderId() const;
+    json toJson() const;
 };
     
