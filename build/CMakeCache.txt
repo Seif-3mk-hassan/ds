@@ -235,6 +235,9 @@ CMAKE_STRIP:FILEPATH=C:/msys64/ucrt64/bin/strip.exe
 //Path to a program.
 CMAKE_TAPI:FILEPATH=CMAKE_TAPI-NOTFOUND
 
+//Toolchain file
+CMAKE_TOOLCHAIN_FILE:STRING=D:/ggggg/toolchain.cmake
+
 //If this value is on, makefiles will be generated without the
 // .SILENT directive, and all commands will be echoed to the console
 // during the make.  This is useful for debugging only. With Visual
