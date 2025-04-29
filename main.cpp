@@ -11,7 +11,7 @@
 #include<stack>
 #include<deque>
 #include<string>
-#include<lib/json.hpp>
+//#include<D:/ggggg/vcpkg/packages/nlohmann-json_x64-windows/include/nlohmann/json.hpp>
 using namespace std;
 
 #define ll long long
@@ -22,7 +22,7 @@ using namespace std;
 #define vi vector<ll>
 
 
-using json = nlohmann::json;
+//using json = nlohmann::json;
 
 struct Node {
     string id;
@@ -38,7 +38,7 @@ int main() {
 
     unordered_map<string, Node> umap;
 
-    json j;
+    //json j;
     for (int i = 0; i < 3; i++)
     {
         Node d;
