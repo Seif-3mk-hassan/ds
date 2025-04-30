@@ -53,10 +53,10 @@ RM = "C:\Program Files\CMake\bin\cmake.exe" -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = E:\ggggg
+CMAKE_SOURCE_DIR = D:\ggggg
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = E:\ggggg\build
+CMAKE_BINARY_DIR = D:\ggggg\build
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -84,14 +84,14 @@ clean: CMakeFiles/DSproject.dir/clean
 CMakeFiles/DSproject.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\DSproject.dir\build.make CMakeFiles/DSproject.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\DSproject.dir\build.make CMakeFiles/DSproject.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=E:\ggggg\build\CMakeFiles --progress-num=1,2 "Built target DSproject"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=D:\ggggg\build\CMakeFiles --progress-num=1,2,3,4,5,6,7 "Built target DSproject"
 .PHONY : CMakeFiles/DSproject.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/DSproject.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start E:\ggggg\build\CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\ggggg\build\CMakeFiles 7
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 CMakeFiles/DSproject.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start E:\ggggg\build\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start D:\ggggg\build\CMakeFiles 0
 .PHONY : CMakeFiles/DSproject.dir/rule
 
 # Convenience name for target.
@@ -101,7 +101,7 @@ DSproject: CMakeFiles/DSproject.dir/rule
 # codegen rule for target.
 CMakeFiles/DSproject.dir/codegen:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\DSproject.dir\build.make CMakeFiles/DSproject.dir/codegen
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=E:\ggggg\build\CMakeFiles --progress-num=1,2 "Finished codegen for target DSproject"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=D:\ggggg\build\CMakeFiles --progress-num=1,2,3,4,5,6,7 "Finished codegen for target DSproject"
 .PHONY : CMakeFiles/DSproject.dir/codegen
 
 # clean rule for target.

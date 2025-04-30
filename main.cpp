@@ -11,11 +11,7 @@
 #include<stack>
 #include<deque>
 #include<string>
-
-#include "lib/json.hpp"
-#include "headers/user.h"
-#include "headers/fileman.h"
-
+//#include<D:/ggggg/vcpkg/packages/nlohmann-json_x64-windows/include/nlohmann/json.hpp>
 using namespace std;
 
 #define ll long long
@@ -25,6 +21,16 @@ using namespace std;
 #define ld long double
 #define vi vector<ll>
 
+
+//using json = nlohmann::json;
+
+struct Node {
+    string id;
+    string name;
+    string pass;
+    vector<string> friends;
+    stack<string> messages;
+};
 int main() {
 
     ios_base::sync_with_stdio(false);
@@ -34,15 +40,21 @@ int main() {
 
 
 
-    fileman fileManager;
-    fileManager.readFromFile("users.json");
+    unordered_map<string, Node> umap;
 
-    User newUser("001", "ahmed", "1234");
-    fileManager.addUser(newUser);
-
-    fileManager.writeToFile("users.json");
-
-    cout << "Hello World" << endl;
+    //json j;
+    for (int i = 0; i < 3; i++)
+    {
+        Node d;
+        umap[to_string(i)]={d.id=to_string(i), d.name="seif "+to_string(i), d.pass="pass"+to_string(i),{},{}};
+    }
+    for (auto j:umap)
+    {
+        cout << j.first << " : " << j.second.name <<" "<< j.second.pass <<" "<<j.second.messages.size()<<" "<<j.second.friends.size()<<endl;
+    }
+    
+    //cout << "Hello World" << endl;
+    
     return 0;
 }
 

@@ -1,15 +1,23 @@
 #include "Message.h"
-#include <string>
-Message::Message(){
-     messageID = "";
-     senderID 	= "";
-     receiverID = "";
-     content = "";
+#include "lib/json.hpp"
+using namespace std;
+using json = nlohmann::json;
+
+Message::Message() : messageID(""), senderID(""), receiverID(""), content("") {}
+
+bool Message::isFavorite() {
+    return false; // Implement this based on your requirements
 }
 
-Message::Message(string& id, string& sender, string& text)
-          : messageID(id), senderID(sender), content(text) {}
-// Getters
-string Message::getSenderId() const { return senderID; }
+string Message::getSenderId() const {
+    return senderID;
+}
 
-
+json Message::toJson() const {
+    json j;
+    j["messageID"] = messageID;
+    j["senderID"] = senderID;
+    j["receiverID"] = receiverID;
+    j["content"] = content;
+    return j;
+}

@@ -1,20 +1,26 @@
 # pragma once 
 #include <iostream>
+#include <algorithm>
 #include <vector>
 #include <map>
+#include <stack>
 #include <queue>
-#include "Message.h"
+#include "Message.h"       
 #include "Contact.h"      
+#include "lib/json.hpp"
+
+using json = nlohmann::json;
 using namespace std;
 
 class User {
+    private:
     string ID;
     string username;
     string password;
-    map<string, Contact> contacts;//contacts[id]= con
-
+    map<string, Contact> contacts;
     vector<Message> receivedMessages;
-    queue<Message> favoriteMessages;//imp
+    stack<Message> sentMessages;
+    queue<Message> favoriteMessages;
 
 public:
     // Constructors
@@ -35,20 +41,14 @@ public:
     // Message Operations
     void receiveMessage(const Message& message);
     const vector<Message>& getReceivedMessages() const;
+    void sendMessage(string content, Contact reciever);
+    void undoMessage();
+    void viewMessages();
+    void viewMessageByContact(string );
     //favourites    
     void addMessageToFavorites(Message);
     void removeOldestFavorite();
     void viewFavoriteMessages() const;
 
-    bool registerr();
-    bool is_logged_in();
-    static void mainMenu();
 
-    // // JSON Operations
-    // json toJson() const;
-    // void fromJson(const json& j);
-
-    // // File save/load
-    // static void saveUserToFile(const User& user, const string& filename);
-    // static User loadUserFromFile(const string& filename);
 };

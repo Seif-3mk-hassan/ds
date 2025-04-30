@@ -1,8 +1,38 @@
 [
 {
-  "directory": "E:/ggggg/build",
-  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe   -g -std=gnu++23 -o CMakeFiles\\DSproject.dir\\main.cpp.obj -c E:\\ggggg\\main.cpp",
-  "file": "E:/ggggg/main.cpp",
+  "directory": "D:/ggggg/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles/DSproject.dir/includes_CXX.rsp -g -std=gnu++23 -o CMakeFiles\\DSproject.dir\\main.cpp.obj -c D:\\ggggg\\main.cpp",
+  "file": "D:/ggggg/main.cpp",
   "output": "CMakeFiles/DSproject.dir/main.cpp.obj"
+},
+{
+  "directory": "D:/ggggg/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles/DSproject.dir/includes_CXX.rsp -g -std=gnu++23 -o CMakeFiles\\DSproject.dir\\source\\contact.cpp.obj -c D:\\ggggg\\source\\contact.cpp",
+  "file": "D:/ggggg/source/contact.cpp",
+  "output": "CMakeFiles/DSproject.dir/source/contact.cpp.obj"
+},
+{
+  "directory": "D:/ggggg/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles/DSproject.dir/includes_CXX.rsp -g -std=gnu++23 -o CMakeFiles\\DSproject.dir\\source\\login.cpp.obj -c D:\\ggggg\\source\\login.cpp",
+  "file": "D:/ggggg/source/login.cpp",
+  "output": "CMakeFiles/DSproject.dir/source/login.cpp.obj"
+},
+{
+  "directory": "D:/ggggg/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles/DSproject.dir/includes_CXX.rsp -g -std=gnu++23 -o CMakeFiles\\DSproject.dir\\source\\message.cpp.obj -c D:\\ggggg\\source\\message.cpp",
+  "file": "D:/ggggg/source/message.cpp",
+  "output": "CMakeFiles/DSproject.dir/source/message.cpp.obj"
+},
+{
+  "directory": "D:/ggggg/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles/DSproject.dir/includes_CXX.rsp -g -std=gnu++23 -o CMakeFiles\\DSproject.dir\\source\\system_manger.cpp.obj -c D:\\ggggg\\source\\system_manger.cpp",
+  "file": "D:/ggggg/source/system_manger.cpp",
+  "output": "CMakeFiles/DSproject.dir/source/system_manger.cpp.obj"
+},
+{
+  "directory": "D:/ggggg/build",
+  "command": "C:\\msys64\\ucrt64\\bin\\g++.exe  @CMakeFiles/DSproject.dir/includes_CXX.rsp -g -std=gnu++23 -o CMakeFiles\\DSproject.dir\\source\\user.cpp.obj -c D:\\ggggg\\source\\user.cpp",
+  "file": "D:/ggggg/source/user.cpp",
+  "output": "CMakeFiles/DSproject.dir/source/user.cpp.obj"
 }
 ]
