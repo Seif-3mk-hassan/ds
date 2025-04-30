@@ -1,20 +1,18 @@
 # pragma once 
 #include <iostream>
-#include <algorithm>
 #include <vector>
 #include <map>
-#include <stack>
 #include <queue>
-#include "Message.h"       
+#include "Message.h"
 #include "Contact.h"      
 using namespace std;
 
 class User {
-    private:
     string ID;
     string username;
     string password;
     map<string, Contact> contacts;//contacts[id]= con
+
     vector<Message> receivedMessages;
     queue<Message> favoriteMessages;//imp
 
@@ -41,6 +39,10 @@ public:
     void addMessageToFavorites(Message);
     void removeOldestFavorite();
     void viewFavoriteMessages() const;
+
+    bool registerr();
+    bool is_logged_in();
+    static void mainMenu();
 
     // // JSON Operations
     // json toJson() const;

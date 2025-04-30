@@ -4,20 +4,24 @@
 
 #include "login.h"
 #include <iostream>
+#include <user.cpp>
 #include <string>
 #include <fstream>
+#include <nlohmann/json.hpp>
+#include <folly/dynamic.h>
+using json = nlohmann::json;
 using namespace std;
 
 bool login ::registerr()
 {
     cout << "Welcome to the registration system!" << endl;
-    string username, password;
+    User u1;
     cout << "Enter username: ";
     cin >> username;
     cout << "Enter password: ";
     cin >> password;
     ofstream file;
-    file.open("login.txt");
+    file.open("login.json");
     file << username << endl << password;
     file.close();
     cout << "User registered successfully!" << endl;

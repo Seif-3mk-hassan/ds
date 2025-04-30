@@ -1,6 +1,6 @@
+#pragma once
 #include <iostream>
 #include <string>
-#include <vector>
 #include "Message.h"
 using namespace std;
 class Contact {

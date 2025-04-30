@@ -1,5 +1,9 @@
 #include "user.h"
+#include <fstream>
+#include <nlohmann/json.hpp>
+#include <folly/dynamic.h>
 using namespace std ;
+using json = nlohmann::json ;
 
 
 // Constructor
@@ -73,6 +77,56 @@ while (!copy.empty()) {
 //==============================
 
 
+bool User::is_logged_in()
+{
+    cout << "Welcome to the login system!" << endl;
+    string name,pass;
+    cout << "Enter username: ";
+    cin >> username;
+    cout << "Enter password: ";
+    cin >> password;
+    ifstream read("login.json");
+
+    json j;
+    read >> j;
+
+    if (j["username"] == username && j["password"] == password) {
+            cout << "Logged in successfully!" << endl;
+            return true;
+    }
+    else if (j["username"] != username) {
+            cout << "User not found!" << endl;
+            return false;
+    }
+    else if (j["username"] == username && j["password"] != password) {
+            cout << "incorrect password!" << endl;
+            return false;
+    }
+}
+
+void User::mainMenu()
+{
+    cout << "MAIN MENU" << endl;
+    cout << "enter your choice" << endl;
+    cout << " 1 : register" << endl;
+    cout << " 2 : login" << endl;
+    int choice;
+    cin >> choice;
+    if (choice == 1) {
+        registerr();
+    }
+    else if (choice == 2) {
+        if (is_logged_in()) {
+            cout << "Welcome to the system!" << endl;
+        }
+        else {
+            cout << "Login failed!" << endl;
+        }
+    }
+    else {
+        cout << "Invalid choice!" << endl;
+    }
+}
 // // ===========================
 // // JSON FUNCTIONS
 // // ===========================

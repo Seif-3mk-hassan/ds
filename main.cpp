@@ -1,4 +1,4 @@
-#include<iostream>
+#include <iostream>
 #include<cmath>
 #include<algorithm>
 #include<limits.h>
@@ -26,9 +26,13 @@ using namespace std;
 #define vi vector<ll>
 
 int main() {
+
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);
+    User::mainMenu();
+
+
 
     fileman fileManager;
     fileManager.readFromFile("users.json");
