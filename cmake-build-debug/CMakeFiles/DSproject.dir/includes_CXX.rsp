@@ -1,1 +1,1 @@
--IC:/Users/user/CLionProjects/ds/headers -IC:/Users/user/CLionProjects/ds/source -isystem "C:/Users/user/vcpkg/installed/x64-windows/include"
+-IC:/Users/user/CLionProjects/ds/headers -IC:/Users/user/CLionProjects/ds/lib -isystem "C:/Users/user/vcpkg/installed/x64-windows/include"

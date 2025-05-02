@@ -1,36 +1,35 @@
 #include "Contact.h"
 #include "Message.h"
-#include "lib/json.hpp"
+#include "nlohmann/json.hpp"
+#include "filemanger.cpp"
 using namespace std;
 using json = nlohmann::json;
 
-class Contact {
-    private:
-        string contactID;
-        vector<Message> messages;  
-        int messageCount;             
+
+        Contact::Contact() : contactID(""), messageCount(0) {}
+        Contact::Contact(const string& id) : contactID(id), messageCount(0) {}
+        Contact::Contact(const string& id, string& username) : contactID(id), messageCount(0) {}
     
-    public:
-        Contact() : contactID(""), messageCount(0) {}
-        Contact(const string& id) : contactID(id), messageCount(0) {}
-        Contact(const string& id, string& username) : contactID(id), messageCount(0) {}
-    
-        void addMessage(Message msg) {
+        void Contact::addMessage(Message msg) {
             messages.push_back(msg);
             messageCount++;
         }
     
-        int getMessageCount() { return messageCount; }
+        int Contact::getMessageCount() { return messageCount; }
     
-        vector<Message>& getMessages() { return messages; }
+        vector<Message> Contact::getMessages() { return messages; }
     
-        json toJson() const {
-            json j;
-            j["contactID"] = contactID;
-            j["messageCount"] = messageCount;
+        json Contact::toJson() const {
+            json jsonContact;
+            jsonContact["contactID"] = contactID;
+            jsonContact["messageCount"] = messageCount;
             for (const auto& msg : messages) {
-                j["messages"].push_back(msg.toJson());
+                jsonContact["messages"].push_back(msg.toJson());
             }
-            return j;
+            filemanger::addToJsonfile(jsonContact,"contact.json");
+
+            return jsonContact;
         }
-    };
+
+
+

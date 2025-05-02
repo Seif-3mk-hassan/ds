@@ -13,9 +13,8 @@ using namespace std;
 class filemanger {
 
       public:
-            void addToJsonfile(nlohmann::json jsonObj, const string& jsonFile);
-
-            nlohmann::json Readfromjson(const string & jsonfile);
+            static void addToJsonfile(nlohmann::json jsonObj, const string& jsonFile);
+            static nlohmann::json Readfromjson(const string & jsonfile);
 
 
 };

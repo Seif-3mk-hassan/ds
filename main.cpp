@@ -11,6 +11,7 @@
 #include<stack>
 #include<deque>
 #include<string>
+#include "user.h"
 //#include<D:/ggggg/vcpkg/packages/nlohmann-json_x64-windows/include/nlohmann/json.hpp>
 using namespace std;
 
@@ -36,7 +37,7 @@ int main() {
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);
-    User::mainMenu();
+    User::;
 
 
 

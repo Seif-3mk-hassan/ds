@@ -1,11 +1,26 @@
 #include "user.h"
 #include "Contact.h"
+#include "filemanger.h"
 using namespace std;
 
 
 // Constructor
 User::User(const string& id, const string& uname, const string& pwd)
-    : ID(id), username(uname), password(pwd) {}
+: ID(id), username(uname), password(pwd) {
+    json jsonUser;
+    for (auto j : usersArrJson["users"]["ID"])
+    {
+        if(j == ID)
+        {
+            cout << "user already exists\n";
+            return;
+        }
+    }
+    jsonUser["ID"] = ID;
+    jsonUser["username"] = username;
+    jsonUser["password"] = password;
+    usersArrJson["users"].push_back(jsonUser);
+    addToJsonfile(usersArrJson,"User.json");}
 
 string User::getId() const { return ID; }
 string User::getUsername() const { return username; }
@@ -103,6 +118,20 @@ queue<Message> copy = favoriteMessages; //  3 4 5
 while (!copy.empty()) {
     cout << copy.front().content << "\n";
     copy.pop();}
+}
+
+
+void User::readfromjson(string userid)
+{
+    json j = filemanger::Readfromjson("User.json");
+    for (auto i : j["users"])
+    {
+        if(i["ID"] == userid)
+        {
+            username = i["username"];
+            password = i["password"];
+        }
+    }
 }
 //==============================
 

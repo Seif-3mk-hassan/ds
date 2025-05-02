@@ -6,7 +6,7 @@
 #include <fstream>
 void filemanger::addToJsonfile(nlohmann::json jsonObj, const string& jsonFile)
 {
-  ofstream file("jsonFile");
+  ofstream file(jsonFile);
   file<<jsonObj;
 }
 

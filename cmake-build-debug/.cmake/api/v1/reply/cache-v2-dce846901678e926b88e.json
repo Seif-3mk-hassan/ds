@@ -91,7 +91,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "30"
+			"value" : "31"
 		},
 		{
 			"name" : "CMAKE_CACHE_PATCH_VERSION",
@@ -103,7 +103,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "5"
+			"value" : "6"
 		},
 		{
 			"name" : "CMAKE_COLOR_DIAGNOSTICS",
@@ -166,7 +166,7 @@
 					"value" : "CXX compiler"
 				}
 			],
-			"type" : "FILEPATH",
+			"type" : "STRING",
 			"value" : "C:/Program Files/JetBrains/CLion 2024.3.2/bin/mingw/bin/g++.exe"
 		},
 		{
@@ -310,7 +310,7 @@
 					"value" : "C compiler"
 				}
 			],
-			"type" : "FILEPATH",
+			"type" : "STRING",
 			"value" : "C:/Program Files/JetBrains/CLion 2024.3.2/bin/mingw/bin/gcc.exe"
 		},
 		{
@@ -1039,7 +1039,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/Program Files/JetBrains/CLion 2024.3.2/bin/cmake/win/x64/share/cmake-3.30"
+			"value" : "C:/Program Files/JetBrains/CLion 2024.3.2/bin/cmake/win/x64/share/cmake-3.31"
 		},
 		{
 			"name" : "CMAKE_SHARED_LINKER_FLAGS",
@@ -1275,10 +1275,10 @@
 				},
 				{
 					"name" : "HELPSTRING",
-					"value" : "No help, variable specified on the command line."
+					"value" : "The CMake toolchain file"
 				}
 			],
-			"type" : "UNINITIALIZED",
+			"type" : "FILEPATH",
 			"value" : "C:/Users/user/vcpkg/scripts/buildsystems/vcpkg.cmake"
 		},
 		{
@@ -1660,6 +1660,30 @@
 			],
 			"type" : "INTERNAL",
 			"value" : "C:/Users/user/vcpkg"
+		},
+		{
+			"name" : "_CMAKE_CXX_LINKER_PUSHPOP_STATE_SUPPORTED",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "linker supports push/pop state"
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "TRUE"
+		},
+		{
+			"name" : "_CMAKE_C_LINKER_PUSHPOP_STATE_SUPPORTED",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "linker supports push/pop state"
+				}
+			],
+			"type" : "INTERNAL",
+			"value" : "TRUE"
 		},
 		{
 			"name" : "_CMAKE_LINKER_PUSHPOP_STATE_SUPPORTED",
@@ -2478,6 +2502,18 @@
 			"value" : "j_DIR-NOTFOUND"
 		},
 		{
+			"name" : "js_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "The directory containing a CMake configuration file for js."
+				}
+			],
+			"type" : "PATH",
+			"value" : "js_DIR-NOTFOUND"
+		},
+		{
 			"name" : "jso_DIR",
 			"properties" : 
 			[
@@ -2490,6 +2526,18 @@
 			"value" : "jso_DIR-NOTFOUND"
 		},
 		{
+			"name" : "json.h_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "The directory containing a CMake configuration file for json.h."
+				}
+			],
+			"type" : "PATH",
+			"value" : "json.h_DIR-NOTFOUND"
+		},
+		{
 			"name" : "json_DIR",
 			"properties" : 
 			[
@@ -2500,6 +2548,30 @@
 			],
 			"type" : "PATH",
 			"value" : "json_DIR-NOTFOUND"
+		},
+		{
+			"name" : "nlo_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "The directory containing a CMake configuration file for nlo."
+				}
+			],
+			"type" : "PATH",
+			"value" : "nlo_DIR-NOTFOUND"
+		},
+		{
+			"name" : "nlohmann_DIR",
+			"properties" : 
+			[
+				{
+					"name" : "HELPSTRING",
+					"value" : "The directory containing a CMake configuration file for nlohmann."
+				}
+			],
+			"type" : "PATH",
+			"value" : "nlohmann_DIR-NOTFOUND"
 		},
 		{
 			"name" : "nlohmann_json_DIR",

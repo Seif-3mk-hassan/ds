@@ -7,13 +7,13 @@
 #include <queue>
 #include "Message.h"       
 #include "Contact.h"      
-#include "lib/json.hpp"
+#include "nlohmann//json.hpp"
+#include "filemanger.h"
 
 using json = nlohmann::json;
 using namespace std;
 
-class User {
-    private:
+class User :public filemanger{
     string ID;
     string username;
     string password;
@@ -21,8 +21,9 @@ class User {
     vector<Message> receivedMessages;
     stack<Message> sentMessages;
     queue<Message> favoriteMessages;
-
+    json usersArrJson= json::array();
 public:
+    static vector <User> users;
     // Constructors
     User() = default;
     User(const string& id, const string& uname, const string& pwd);
@@ -49,6 +50,9 @@ public:
     void addMessageToFavorites(Message);
     void removeOldestFavorite();
     void viewFavoriteMessages() const;
+
+    // Save and Load
+    void readfromjson(string userid);
 
 
 };

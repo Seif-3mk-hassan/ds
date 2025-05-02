@@ -1,5 +1,5 @@
 #pragma once
-#include "../lib/json.hpp"
+#include "nlohmann/json.hpp"
 #include<iostream>
 #include<fstream>
 #include<unordered_map>
