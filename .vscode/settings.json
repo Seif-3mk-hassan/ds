@@ -1,3 +1,22 @@
 {
-    "C_Cpp.default.compilerPath": "C:/msys64/ucrt64/bin/g++.exe"
+    "C_Cpp.default.compilerPath": "C:/msys64/ucrt64/bin/g++.exe",
+    "files.associations": {
+        "*.cpp": "cpp",
+        "array": "cpp",
+        "chrono": "cpp",
+        "deque": "cpp",
+        "forward_list": "cpp",
+        "list": "cpp",
+        "string": "cpp",
+        "unordered_map": "cpp",
+        "unordered_set": "cpp",
+        "vector": "cpp",
+        "string_view": "cpp",
+        "format": "cpp",
+        "initializer_list": "cpp",
+        "ranges": "cpp",
+        "span": "cpp",
+        "text_encoding": "cpp",
+        "valarray": "cpp"
+    }
 }

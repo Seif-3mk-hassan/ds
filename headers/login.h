@@ -5,13 +5,17 @@
 #include "system_manger.h"
 #include "user.h"
 
-class login : public system_manager {
+class login {
 
 public:
-    static void registerr();
-    static User is_logged_in();
-    static void mainMenu();
-    static void saveTofile(User);
+     system_manager s;
+     login(system_manager s){
+          this->s=s;
+     }
+     void registerr();
+     User is_logged_in();
+     void mainMenu();
+     void saveTofile(User);
 
 };
 

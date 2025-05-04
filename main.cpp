@@ -12,6 +12,9 @@
 #include<deque>
 #include<string>
 #include "user.h"
+#include "system_manger.h"
+#include "login.h"
+//#include<vector>
 //#include<D:/ggggg/vcpkg/packages/nlohmann-json_x64-windows/include/nlohmann/json.hpp>
 using namespace std;
 
@@ -38,8 +41,9 @@ int main() {
     cin.tie(NULL);
     cout.tie(NULL);
     //User::;
-
-
+    system_manager sys;
+    login log(sys);
+    log.mainMenu();
 
     unordered_map<string, Node> umap;
 

@@ -16,7 +16,7 @@ void login ::registerr()
     string username, password;
     cout << "Enter username: ";
     cin >> username;
-    if(system_manager::is_user_registered(username)){
+    if(s.is_user_registered(username)){
         cout << "Username already exists!" << endl;
         cout<< "1 return to mainmenu"<<'\n';
         cout<<"2 login"<<endl;
@@ -34,7 +34,7 @@ void login ::registerr()
         cout << "Enter password: ";
         cin >> password;
         cout << "User registered successfully!" << endl;
-        system_manager::addUser(username, password);
+        s.addUser(username, password);
     }
 }
 
@@ -45,9 +45,9 @@ User login::is_logged_in()
     cin >> username;
     cout << "Enter password: ";
     cin >> password;
-    if(system_manager::is_login(username,password)==system_manager::login_status::SUCCESS){
+    if(s.is_login(username,password)==system_manager::login_status::SUCCESS){
         cout << "Logged in successfully!" << endl;
-        return system_manager::get_user_id_by_username(username);
+        return s.get_user_id_by_username(username);
     }
     else{
         cout << "Login failed!" << endl;
