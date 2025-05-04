@@ -21,9 +21,10 @@ class User :public filemanger{
     vector<Message> receivedMessages;
     stack<Message> sentMessages;
     queue<Message> favoriteMessages;
-    json usersArrJson= json::array();
 public:
     static vector <User> users;
+    static json usersArrJson;
+
     // Constructors
     User() = default;
     User(const string& id, const string& uname, const string& pwd);
@@ -54,5 +55,7 @@ public:
     // Save and Load
     void readfromjson(string userid);
 
-
+    void set_id(string);
+    void set_username(string);
+    void Userset_password(string);
 };

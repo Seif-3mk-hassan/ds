@@ -6,25 +6,29 @@ using namespace std;
 
 // Constructor
 User::User(const string& id, const string& uname, const string& pwd)
-: ID(id), username(uname), password(pwd) {
-    json jsonUser;
-    for (auto j : usersArrJson["users"]["ID"])
-    {
-        if(j == ID)
-        {
-            cout << "user already exists\n";
-            return;
-        }
-    }
-    jsonUser["ID"] = ID;
-    jsonUser["username"] = username;
-    jsonUser["password"] = password;
-    usersArrJson["users"].push_back(jsonUser);
-    addToJsonfile(usersArrJson,"User.json");}
+: ID(id), username(uname), password(pwd) {}
 
 string User::getId() const { return ID; }
 string User::getUsername() const { return username; }
 string User::getPassword() const { return password; }
+
+
+
+void User::set_id(string id)
+{
+    ID = id;
+}
+
+void User::set_username(string username)
+{
+    this->username = username;
+}
+
+void User::Userset_password(string password)
+{
+    this->password = password;
+}
+
 
 bool User::addContact(const string& userId) {
     if (contacts.find(userId) == contacts.end()) {
