@@ -1,6 +1,7 @@
 #include "user.h"
 #include "Contact.h"
 #include "filemanger.h"
+#include "nlohmann/json.hpp"
 using namespace std;
 
 
@@ -47,13 +48,30 @@ Contact* User::findContact(const string& userId) {
     return it != contacts.end() ? &it->second : nullptr;
 }
 
-vector<Contact> User::getSortedContacts() const { 
+// vector<Contact> User::getSortedContacts() const {
+//     vector<Contact> sortedContacts;
+//     for (const auto& pair : contacts) {
+//         sortedContacts.push_back(pair.second);
+//     }
+//     sort(sortedContacts.begin(), sortedContacts.end());
+//     return sortedContacts;
+// }
+
+void User::displayContactsByMessageCount() {
     vector<Contact> sortedContacts;
-    for (const auto& pair : contacts) {
-        sortedContacts.push_back(pair.second);
+    for (const auto& [id, contact] : contacts) {
+        sortedContacts.push_back(contact);
     }
-    sort(sortedContacts.begin(), sortedContacts.end());
-    return sortedContacts;
+
+    sort(sortedContacts.begin(), sortedContacts.end(),
+        [](const Contact& a, const Contact& b) {
+            return a.messageCount > b.messageCount;
+        });
+
+    for (const auto& contact : sortedContacts) {
+        cout << contact.contactID << ": "
+             << contact.messageCount<< endl;
+    }
 }
 
 void User::receiveMessage(const Message& message) {

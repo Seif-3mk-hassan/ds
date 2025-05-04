@@ -7,7 +7,7 @@
 #include <queue>
 #include "Message.h"       
 #include "Contact.h"      
-#include "nlohmann//json.hpp"
+#include "nlohmann/json.hpp"
 #include "filemanger.h"
 
 using json = nlohmann::json;
@@ -39,7 +39,7 @@ public:
     bool removeContact(const string& userId);
     Contact* findContact(const string& userId);
     vector<Contact> getSortedContacts() const;
-
+    void displayContactsByMessageCount();
     // Message Operations
     void receiveMessage(const Message& message);
     const vector<Message>& getReceivedMessages() const;

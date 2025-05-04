@@ -1,7 +1,7 @@
 #include "Contact.h"
 #include "Message.h"
 #include "nlohmann/json.hpp"
-#include "filemanger.cpp"
+#include "filemanger.h"
 using namespace std;
 using json = nlohmann::json;
 

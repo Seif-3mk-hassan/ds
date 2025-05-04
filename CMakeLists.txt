@@ -15,6 +15,5 @@ include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/lib
 )
 add_executable(DSproject ${SOURCES})
-find_package(folly CONFIG REQUIRED)
 find_package(nlohmann_json CONFIG REQUIRED)
-target_link_libraries(DSproject PRIVATE nlohmann_json::nlohmann_json folly)
+target_link_libraries(DSproject PRIVATE nlohmann_json::nlohmann_json)

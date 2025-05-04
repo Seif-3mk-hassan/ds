@@ -46,21 +46,21 @@ User system_manager::get_user_id_by_username(string username)
     return User();// EMPTY USER
 }
 
-system_manager::login_status system_manager::is_login(string username, string password)
+string system_manager::is_login(string username, string password)
 {
     auto it = user_username.find(username);
     if (it != user_username.end())
     {
         if (it->second.getPassword() == password)
         {
-            return login_status::SUCCESS;
+            return "SUCCESS";
         }
         else
         {
-            return login_status::FAILED;
+            return "FAILED";
         }
     }
-    return login_status::FAILED;
+    return "FAILED";
 }
 
 unordered_map<string,User>& system_manager::get_user_by_id() {

@@ -27,9 +27,9 @@ public:
      bool is_user_registered(string username);
      User get_user_id_by_username(string username);
 
-    enum login_status { SUCCESS, FAILED };
+    // enum login_status { SUCCESS, FAILED };
 
-     login_status is_login(string username, string password);
+     string is_login(string username, string password);
 
      void addUser(string username, string password);
 

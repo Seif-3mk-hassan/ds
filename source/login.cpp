@@ -5,7 +5,6 @@
 #include "login.h"
 #include <iostream>
 #include <string>
-#include <fstream>
 #include "nlohmann/json.hpp"
 #include "user.h"
 using namespace std;
@@ -45,7 +44,7 @@ User login::is_logged_in()
     cin >> username;
     cout << "Enter password: ";
     cin >> password;
-    if(s.is_login(username,password)==system_manager::login_status::SUCCESS){
+    if(s.is_login(username,password)=="SUCCESS"){
         cout << "Logged in successfully!" << endl;
         return s.get_user_id_by_username(username);
     }
@@ -53,6 +52,7 @@ User login::is_logged_in()
         cout << "Login failed!" << endl;
         login::is_logged_in();
     }
+    return User();
 }
 
 void login::mainMenu()
