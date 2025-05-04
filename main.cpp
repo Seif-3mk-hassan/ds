@@ -2,16 +2,12 @@
 #include<cmath>
 #include<algorithm>
 #include<limits.h>
-#include<queue>
-#include<map>
-#include<set>
 #include<unordered_map>
-#include<unordered_set>
-#include<list>
 #include<stack>
-#include<deque>
 #include<string>
 #include "user.h"
+#include "system_manger.h"
+#include "login.h"
 //#include<D:/ggggg/vcpkg/packages/nlohmann-json_x64-windows/include/nlohmann/json.hpp>
 using namespace std;
 
@@ -34,10 +30,17 @@ struct Node {
 };
 int main() {
 
+    system_manager sys;
+
+    sys.set_userID(User::users);
+
+    User u1;
+    login::mainMenu();
+
     ios_base::sync_with_stdio(false);
     cin.tie(NULL);
     cout.tie(NULL);
-    User::;
+
 
 
 

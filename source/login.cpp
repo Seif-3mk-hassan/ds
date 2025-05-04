@@ -6,6 +6,8 @@
 #include <iostream>
 #include <string>
 #include <fstream>
+#include "nlohmann/json.hpp"
+#include "user.h"
 using namespace std;
 
 void login ::registerr()
@@ -16,7 +18,17 @@ void login ::registerr()
     cin >> username;
     if(system_manager::is_user_registered(username)){
         cout << "Username already exists!" << endl;
-        login::registerr();
+        cout<< "1 return to mainmenu"<<'\n';
+        cout<<"2 login"<<endl;
+        int choice ;
+        cin>>choice;
+        if (choice == 1)
+        {
+            login::mainMenu();
+        }else if (choice == 2)
+        {
+            login::is_logged_in();
+        }
     }
     else{
         cout << "Enter password: ";
@@ -60,4 +72,22 @@ void login::mainMenu()
     else {
         cout << "Invalid choice!" << endl;
     }
+}
+
+void login::saveTofile(User U)
+{
+    json jsonUser;
+    for (auto j : User::usersArrJson["users"]["ID"])
+    {
+        if(j == U.getId())
+        {
+            cout << "user already exists\n";
+            return;
+        }
+    }
+    jsonUser["ID"] = U.getId();
+    jsonUser["username"] = U.getUsername();
+    jsonUser["password"] = U.getPassword();
+    User::usersArrJson["users"].push_back(jsonUser);
+    U.addToJsonfile(User::usersArrJson,"User.json");
 }

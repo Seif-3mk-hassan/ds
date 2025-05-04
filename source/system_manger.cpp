@@ -38,8 +38,8 @@ bool system_manager::is_user_registered(string username)
 
 User system_manager::get_user_id_by_username(string username)
 {
-    auto it = username_id.find(username);
-    if (it != username_id.end())
+    auto it = username_password.find(username);
+    if (it != username_password.end())
     {
         return use_by_id[it->second];
     }
@@ -65,6 +65,17 @@ system_manager::login_status system_manager::is_login(string username, string pa
 
 unordered_map<string,User>& system_manager::get_user_by_id() {
     return use_by_id;
+}
+
+void system_manager::set_userID(vector<User> usersvector)
+{
+    for (int i =0;i< usersvector.size();i++)
+    {
+        use_by_id[usersvector[i].getId()] = usersvector[i];
+        user_username[usersvector[i].getUsername()] = usersvector[i];
+        username_password[usersvector[i].getUsername()] = usersvector[i].getPassword();
+    }
+
 }
 
 
