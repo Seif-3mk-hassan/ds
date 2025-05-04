@@ -2,6 +2,8 @@
 #include "Contact.h"
 #include "filemanger.h"
 #include "nlohmann/json.hpp"
+vector<User> User::users;
+json User::usersArrJson;
 using namespace std;
 
 
@@ -143,16 +145,34 @@ while (!copy.empty()) {
 }
 
 
+// void User::readfromjson(string userid)
+// {
+//     json j = filemanger::Readfromjson("Users.json");
+//     for (auto i : j["users"])
+//     {
+//         if(i["ID"] == userid)
+//         {
+//             username = i["username"];
+//             password = i["password"];
+//         }
+//     }
+// }
+
 void User::readfromjson(string userid)
 {
-    json j = filemanger::Readfromjson("User.json");
-    for (auto i : j["users"])
-    {
-        if(i["ID"] == userid)
-        {
-            username = i["username"];
-            password = i["password"];
+    try {
+        json j = filemanger::Readfromjson("Users.json");
+        if (j.contains("users")) {
+            for (auto i : j["users"]) {
+                if(i["ID"] == userid) {
+                    username = i["username"];
+                    password = i["password"];
+                    return;
+                }
+            }
         }
+    } catch (const json::exception& e) {
+        cout << "Error reading JSON: " << e.what() << endl;
     }
 }
 //==============================

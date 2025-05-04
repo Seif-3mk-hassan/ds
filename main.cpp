@@ -37,28 +37,16 @@ struct Node {
 };
 int main() {
 
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-    cout.tie(NULL);
+    // ios_base::sync_with_stdio(false);
+    // cin.tie(NULL);
+    // cout.tie(NULL);
     system_manager sys;
     login log(sys);
     log.mainMenu();
     //////
     unordered_map<string, Node> umap;
 
-    //json j;
-    for (int i = 0; i < 3; i++)
-    {
-        Node d;
-        umap[to_string(i)]={d.id=to_string(i), d.name="seif "+to_string(i), d.pass="pass"+to_string(i),{},{}};
-    }
-    for (auto j:umap)
-    {
-        cout << j.first << " : " << j.second.name <<" "<< j.second.pass <<" "<<j.second.messages.size()<<" "<<j.second.friends.size()<<endl;
-    }
-    
-    //cout << "Hello World" << endl;
-    
+
     return 0;
 }
 

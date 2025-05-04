@@ -22,12 +22,13 @@ system_manager::system_manager()
 
 }
 
-void system_manager::addUser(string username, string password)
+User system_manager::addUser(string username, string password)
 {
     User newUser(to_string(id_counter), username, password);
     user_username[username] = newUser;
     use_by_id[to_string(id_counter)] = newUser;
     id_counter++;
+    return newUser;
 }
 
 bool system_manager::is_user_registered(string username)

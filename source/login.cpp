@@ -11,6 +11,7 @@ using namespace std;
 
 void login ::registerr()
 {
+    User new_user;
     //cout << "Welcome to the registration system!" << endl;
     string username, password;
     cout << "Enter username: ";
@@ -33,8 +34,9 @@ void login ::registerr()
         cout << "Enter password: ";
         cin >> password;
         cout << "User registered successfully!" << endl;
-        s.addUser(username, password);
+         new_user = s.addUser(username, password);
     }
+    saveTofile(new_user);
 }
 
 User login::is_logged_in()
@@ -72,6 +74,7 @@ void login::mainMenu()
     else {
         cout << "Invalid choice!" << endl;
     }
+
 }
 
 void login::saveTofile(User U)
@@ -89,5 +92,5 @@ void login::saveTofile(User U)
     jsonUser["username"] = U.getUsername();
     jsonUser["password"] = U.getPassword();
     User::usersArrJson["users"].push_back(jsonUser);
-    U.addToJsonfile(User::usersArrJson,"User.json");
+    U.addToJsonfile(User::usersArrJson,"Users.json");
 }
