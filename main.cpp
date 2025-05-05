@@ -11,8 +11,8 @@
 #include<stack>
 #include<deque>
 #include<string>
-#include "user.h"
-#include "system_manger.h"
+#include "headers/user.h"
+#include "headers/system_manger.h"
 #include "login.h"
 //#include<vector>
 //#include<D:/ggggg/vcpkg/packages/nlohmann-json_x64-windows/include/nlohmann/json.hpp>
@@ -42,11 +42,16 @@ int main() {
     // cout.tie(NULL);
     system_manager sys;
     login log(sys);
-    log.mainMenu();
+    User user1;
+    user1=log.mainMenu();
     //////
-    unordered_map<string, Node> umap;
-
-
+    user1.addContact("seif");// seif is ID
+    Contact* contact = user1.findContact("seif");
+    if (contact != nullptr) {
+        user1.sendMessage("hello",contact);
+    }
+    user1.viewMessages();
+    user1.viewMessageByContact("seif");
     return 0;
 }
 

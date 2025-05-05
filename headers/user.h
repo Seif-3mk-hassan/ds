@@ -35,7 +35,7 @@ public:
     string getPassword() const;
 
     // Contact Operations
-    bool addContact(const string& userId);
+    void addContact(const string& userId);
     bool removeContact(const string& userId);
     Contact* findContact(const string& userId);
     vector<Contact> getSortedContacts() const;
@@ -43,7 +43,7 @@ public:
     // Message Operations
     void receiveMessage(const Message& message);
     const vector<Message>& getReceivedMessages() const;
-    void sendMessage(string content, Contact reciever);
+    void sendMessage(string content, Contact* reciever);
     void undoMessage();
     void viewMessages();
     void viewMessageByContact(string );

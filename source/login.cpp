@@ -36,7 +36,7 @@ void login ::registerr()
         cout << "User registered successfully!" << endl;
          new_user = s.addUser(username, password);
     }
-    saveTofile(new_user);
+    //saveTofile(new_user);  //مش شغال عندي  json
 }
 
 User login::is_logged_in()
@@ -57,8 +57,9 @@ User login::is_logged_in()
     return User();
 }
 
-void login::mainMenu()
+User login::mainMenu()
 {
+    User u;
     cout << "MAIN MENU" << endl;
     cout << "enter your choice" << endl;
     cout << " 1 : register" << endl;
@@ -69,12 +70,14 @@ void login::mainMenu()
         registerr();
     }
     else if (choice == 2) {
-        User user = is_logged_in();
+        u = is_logged_in();
     }
     else {
         cout << "Invalid choice!" << endl;
+        return mainMenu();
     }
 
+    return u;
 }
 
 void login::saveTofile(User U)

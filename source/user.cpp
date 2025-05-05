@@ -33,12 +33,12 @@ void User::Userset_password(string password)
 }
 
 
-bool User::addContact(const string& userId) {
+void User::addContact(const string& userId) {
     if (contacts.find(userId) == contacts.end()) {
         contacts[userId] = Contact(userId);
-        return true;
+        cout << "Contact added successfully!" << endl;
     }
-    return false;   
+    cout<<"The contact isn't availabe"<<endl;   
 }
 
 bool User::removeContact(const string& userId) {
@@ -88,12 +88,12 @@ const vector<Message>& User::getReceivedMessages() const {
     return receivedMessages;
 }
 
-void User::sendMessage(string content, Contact reciever) {
-    if(reciever.contactID == "null") return;
+void User::sendMessage(string content, Contact* reciever) {
+    if(reciever==nullptr)return;
     Message msg;
     msg.senderID = getId();
     msg.content = content;
-    msg.receiverID = reciever.contactID;
+    msg.receiverID = reciever->contactID;
     sentMessages.push(msg);
 }
 

@@ -14,7 +14,7 @@ public:
      }
      void registerr();
      User is_logged_in();
-     void mainMenu();
+     User mainMenu();
      void saveTofile(User);
 
 };
