@@ -49,8 +49,13 @@ int main() {
     Contact* contact = user1.findContact("seif");
     if (contact != nullptr) {
         user1.sendMessage("hello",contact);
+        user1.sendMessage("hello2", contact);
+        user1.sendMessage("hello3", contact);
+        user1.addMessageToFavorites(user1.sentMessages.top());
+        user1.undoMessage();
     }
     user1.viewMessages();
+    user1.viewFavoriteMessages();
     user1.viewMessageByContact("seif");
     return 0;
 }

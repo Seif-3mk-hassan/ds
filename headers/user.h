@@ -19,9 +19,10 @@ class User :public filemanger{
     string password;
     map<string, Contact> contacts;
     vector<Message> receivedMessages;
-    stack<Message> sentMessages;
+    
     queue<Message> favoriteMessages;
 public:
+    stack<Message> sentMessages;
     static vector <User> users;
     static json usersArrJson;
 

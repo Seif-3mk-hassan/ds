@@ -37,6 +37,7 @@ void User::addContact(const string& userId) {
     if (contacts.find(userId) == contacts.end()) {
         contacts[userId] = Contact(userId);
         cout << "Contact added successfully!" << endl;
+        return;
     }
     cout<<"The contact isn't availabe"<<endl;   
 }
