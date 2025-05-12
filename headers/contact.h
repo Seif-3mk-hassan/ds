@@ -15,6 +15,12 @@ class Contact {
         vector<Message> messages;
         int messageCount;
 
+        // Define the less-than operator for sorting
+        bool operator<(const Contact& other) const
+        {
+            return messageCount < other.messageCount;  // or sort by phone/email/etc.
+        }
+
         Contact();
         Contact(const string& id);
         Contact(const string& id, string& username);
@@ -23,5 +29,14 @@ class Contact {
         vector<Message> getMessages();
         nlohmann::json toJson() const;
         void addContactToJsonfile(nlohmann::json);
-        nlohmann::json ReadContactsfromjson(ifstream);
+    json to_json() const {
+        json msg_array = json::array();
+        for (const auto& msg : messages) {
+            msg_array.push_back(msg.to_json());
+        }
+        return json{
+                {"contact ID", contactID},
+                {"messages", msg_array}
+        };
+    }
 };

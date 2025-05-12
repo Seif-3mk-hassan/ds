@@ -14,7 +14,7 @@ class filemanger {
 
       public:
             static void addToJsonfile(nlohmann::json jsonObj, const string& jsonFile);
-            static nlohmann::json Readfromjson(const string & jsonfile);
+            static nlohmann::json Readfromjson( string  jsonfile);
 
 
 };

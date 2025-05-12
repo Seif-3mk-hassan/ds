@@ -95,5 +95,5 @@ void login::saveTofile(User U)
     jsonUser["username"] = U.getUsername();
     jsonUser["password"] = U.getPassword();
     User::usersArrJson["users"].push_back(jsonUser);
-    U.addToJsonfile(User::usersArrJson,"Users.json");
+    U.addToJsonfile(User::usersArrJson,"users.json");
 }

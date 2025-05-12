@@ -290,12 +290,8 @@ CMakeFiles/DSproject.dir/main.cpp.obj: C:/Users/user/CLionProjects/ds/main.cpp \
   C:/Program\ Files/JetBrains/CLion\ 2024.3.2/bin/mingw/x86_64-w64-mingw32/include/vadefs.h \
   C:/Program\ Files/JetBrains/CLion\ 2024.3.2/bin/mingw/x86_64-w64-mingw32/include/wchar.h \
   C:/Program\ Files/JetBrains/CLion\ 2024.3.2/bin/mingw/x86_64-w64-mingw32/include/wctype.h \
-  C:/Users/user/CLionProjects/ds/headers/contact.h \
-  C:/Users/user/CLionProjects/ds/headers/Message.h \
   C:/Users/user/CLionProjects/ds/headers/filemanger.h \
   C:/Users/user/CLionProjects/ds/headers/login.h \
-  C:/Users/user/CLionProjects/ds/headers/system_manger.h \
-  C:/Users/user/CLionProjects/ds/headers/user.h \
   C:/Users/user/vcpkg/installed/x64-windows/include/nlohmann/adl_serializer.hpp \
   C:/Users/user/vcpkg/installed/x64-windows/include/nlohmann/byte_container_with_subtype.hpp \
   C:/Users/user/vcpkg/installed/x64-windows/include/nlohmann/detail/abi_macros.hpp \
@@ -341,7 +337,12 @@ CMakeFiles/DSproject.dir/main.cpp.obj: C:/Users/user/CLionProjects/ds/main.cpp \
   C:/Users/user/vcpkg/installed/x64-windows/include/nlohmann/json_fwd.hpp \
   C:/Users/user/vcpkg/installed/x64-windows/include/nlohmann/ordered_map.hpp \
   C:/Users/user/vcpkg/installed/x64-windows/include/nlohmann/thirdparty/hedley/hedley.hpp \
-  C:/Users/user/vcpkg/installed/x64-windows/include/nlohmann/thirdparty/hedley/hedley_undef.hpp
+  C:/Users/user/vcpkg/installed/x64-windows/include/nlohmann/thirdparty/hedley/hedley_undef.hpp \
+  C:/Users/user/CLionProjects/ds/headers/contact.h \
+  C:/Users/user/CLionProjects/ds/headers/Message.h \
+  C:/Users/user/CLionProjects/ds/headers/filemanger.h \
+  C:/Users/user/CLionProjects/ds/headers/system_manger.h \
+  C:/Users/user/CLionProjects/ds/headers/user.h
 
 CMakeFiles/DSproject.dir/source/contact.cpp.obj: C:/Users/user/CLionProjects/ds/source/contact.cpp \
   C:/Program\ Files/JetBrains/CLion\ 2024.3.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/algorithm \
@@ -2008,6 +2009,7 @@ CMakeFiles/DSproject.dir/source/user.cpp.obj: C:/Users/user/CLionProjects/ds/sou
   C:/Program\ Files/JetBrains/CLion\ 2024.3.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/fs_fwd.h \
   C:/Program\ Files/JetBrains/CLion\ 2024.3.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/fs_ops.h \
   C:/Program\ Files/JetBrains/CLion\ 2024.3.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/fs_path.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.3.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/fstream.tcc \
   C:/Program\ Files/JetBrains/CLion\ 2024.3.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/functexcept.h \
   C:/Program\ Files/JetBrains/CLion\ 2024.3.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/functional_hash.h \
   C:/Program\ Files/JetBrains/CLion\ 2024.3.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/gslice.h \
@@ -2130,6 +2132,7 @@ CMakeFiles/DSproject.dir/source/user.cpp.obj: C:/Users/user/CLionProjects/ds/sou
   C:/Program\ Files/JetBrains/CLion\ 2024.3.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/ext/type_traits.h \
   C:/Program\ Files/JetBrains/CLion\ 2024.3.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/filesystem \
   C:/Program\ Files/JetBrains/CLion\ 2024.3.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/forward_list \
+  C:/Program\ Files/JetBrains/CLion\ 2024.3.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/fstream \
   C:/Program\ Files/JetBrains/CLion\ 2024.3.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/functional \
   C:/Program\ Files/JetBrains/CLion\ 2024.3.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/initializer_list \
   C:/Program\ Files/JetBrains/CLion\ 2024.3.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/iomanip \
@@ -2186,8 +2189,10 @@ CMakeFiles/DSproject.dir/source/user.cpp.obj: C:/Users/user/CLionProjects/ds/sou
   C:/Program\ Files/JetBrains/CLion\ 2024.3.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/vector \
   C:/Program\ Files/JetBrains/CLion\ 2024.3.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/version \
   C:/Program\ Files/JetBrains/CLion\ 2024.3.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/atomic_word.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.3.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/basic_file.h \
   C:/Program\ Files/JetBrains/CLion\ 2024.3.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/c++allocator.h \
   C:/Program\ Files/JetBrains/CLion\ 2024.3.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/c++config.h \
+  C:/Program\ Files/JetBrains/CLion\ 2024.3.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/c++io.h \
   C:/Program\ Files/JetBrains/CLion\ 2024.3.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/c++locale.h \
   C:/Program\ Files/JetBrains/CLion\ 2024.3.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/cpu_defines.h \
   C:/Program\ Files/JetBrains/CLion\ 2024.3.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/ctype_base.h \
@@ -2934,10 +2939,6 @@ C:/Program\ Files/JetBrains/CLion\ 2024.3.2/bin/mingw/x86_64-w64-mingw32/include
 
 C:/Program\ Files/JetBrains/CLion\ 2024.3.2/bin/mingw/x86_64-w64-mingw32/include/wctype.h:
 
-C:/Users/user/CLionProjects/ds/headers/contact.h:
-
-C:/Users/user/CLionProjects/ds/headers/user.h:
-
 C:/Users/user/vcpkg/installed/x64-windows/include/nlohmann/detail/abi_macros.hpp:
 
 C:/Users/user/vcpkg/installed/x64-windows/include/nlohmann/detail/conversions/to_chars.hpp:
@@ -2989,5 +2990,9 @@ C:/Users/user/vcpkg/installed/x64-windows/include/nlohmann/detail/value_t.hpp:
 C:/Users/user/vcpkg/installed/x64-windows/include/nlohmann/json.hpp:
 
 C:/Users/user/vcpkg/installed/x64-windows/include/nlohmann/ordered_map.hpp:
+
+C:/Users/user/CLionProjects/ds/headers/contact.h:
+
+C:/Users/user/CLionProjects/ds/headers/user.h:
 
 C:/Users/user/CLionProjects/ds/source/user.cpp:

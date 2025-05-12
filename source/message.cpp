@@ -13,11 +13,11 @@ string Message::getSenderId() const {
     return senderID;
 }
 
-json Message::toJson() const {
-    json j;
-    j["messageID"] = messageID;
-    j["senderID"] = senderID;
-    j["receiverID"] = receiverID;
-    j["content"] = content;
-    return j;
-}
+// json Message::toJson() const {
+//     json j;
+//     j["messageID"] = messageID;
+//     j["senderID"] = senderID;
+//     j["receiverID"] = receiverID;
+//     j["content"] = content;
+//     return j;
+// }

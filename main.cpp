@@ -14,10 +14,14 @@
 #include "headers/user.h"
 #include "headers/system_manger.h"
 #include "login.h"
-//#include<vector>
+#include "nlohmann/json.hpp"
+#include "filemanger.h"
+#include "contact.h"
+#include "Message.h"
+#include <vector>
 //#include<D:/ggggg/vcpkg/packages/nlohmann-json_x64-windows/include/nlohmann/json.hpp>
 using namespace std;
-
+using json = nlohmann::json;
 #define ll long long
 #define endl "\n"
 #define pb push_back
@@ -25,8 +29,10 @@ using namespace std;
 #define ld long double
 #define vi vector<ll>
 
+string userfilepath ="C:/Users/user/CLionProjects/ds/users.json";
+string contactsfilepath = "C:/Users/user/CLionProjects/ds/contact.json";
 
-//using json = nlohmann::json;
+
 
 struct Node {
     string id;
@@ -36,7 +42,30 @@ struct Node {
     stack<string> messages;
 };
 int main() {
+    ifstream file(userfilepath);
+    if (!file.is_open()) {
+        std::cerr << "Failed to open "<<userfilepath<<"\n";
+        return 1;
+    }
+
+    json j;
+    file >> j;
+
+
     vector<User>& users = User::users;
+
+    for (json u : j["users"])
+    {
+        if (u.contains("ID") && u["ID"].is_string() &&
+         u.contains("username") && u["username"].is_string() &&
+         u.contains("password") && u["password"].is_string()) {
+
+            User user(u["ID"], u["username"], u["password"]);
+            users.push_back(user);
+         } else {
+             cerr << "Invalid user entry skipped in JSON.\n";
+         }
+    }
     User* currentUser = nullptr;
     int mainChoice;
 
@@ -46,15 +75,58 @@ int main() {
         cin >> mainChoice;
 
         if (mainChoice == 1) {
+
+
             string uname, pwd;
             cout << "Enter username: "; cin >> uname;
             cout << "Enter password: "; cin >> pwd;
+            bool registered = false;
+            for (auto u : users)
+            {
+                if (u.getUsername() == uname)
+                {
+                    cout<< "user already registered.";
+                    registered = true ;
+                    break;
+                }
+            }
 
-            string id = "U" + to_string(users.size() + 1);
-            User newUser(id, uname, pwd);
-            users.push_back(newUser);
+            if (!registered)
+            {
+                string id = "U" + to_string(users.size() + 1);
+                User newUser(id, uname, pwd);
+                users.push_back(newUser);
 
-            cout << "Registration successful.\n";
+                json usersarr;
+
+                ifstream fileread(userfilepath);
+
+                if (!fileread.is_open())
+                {
+                    std::cerr << "Failed to open "<<userfilepath<<"\n";
+                    return 1;
+                }
+
+                fileread >> usersarr;
+
+                json tempuser = {
+                    {"ID", id},
+                    {"username", uname},
+                    {"password", pwd}
+                };
+                usersarr["users"].push_back(tempuser);
+
+                ofstream filewrite(userfilepath);
+                if (!fileread.is_open())
+                {
+                    std::cerr << "Failed to open "<<userfilepath<<"\n";
+                    return 1;
+                }
+                filewrite<<usersarr.dump(4);
+
+                cout << "Registration successful.\n";
+            }
+
 
         }
         else if (mainChoice == 2) {
@@ -72,7 +144,7 @@ int main() {
             }
 
             if (!found) {
-                cout << "Invalid login.\n";
+                cout << "User not found.\n";
                 continue;
             }
 
@@ -103,7 +175,7 @@ int main() {
                     cout << "Enter message: ";
                     getline(cin, content);
 
-                    currentUser->addContact(receiverId);  // Rule: only add if messaged
+                    currentUser->addContact(receiverId);  // Rule: only add if messag
                     Contact* contact = currentUser->findContact(receiverId);
                     currentUser->sendMessage(content, contact);
 
@@ -120,6 +192,52 @@ int main() {
                     }
 
                     cout << "Message sent.\n";
+
+                    // add sender to receiver contact list
+                    // json contactsArr;
+                    // ifstream fileread(contactsfilepath);
+                    // string senderID = currentUser->getId();
+                    // fileread>>contactsArr;
+                    // json newcontact ={{"id", senderID } ,{"chat",json::array()}};
+                    // bool present =false;
+                    // for (auto& user : contactsArr["user"]) {
+                    //     if (user["id"] == receiverId) {
+                    //         // check if sender has send before
+                    //         for (auto& c: user["contacts"])
+                    //         {
+                    //             if (user["id"] == senderID)
+                    //             {
+                    //                 present = true;
+                    //                 break;
+                    //             }
+                    //         }//if sent before add message to chats else add new contact
+                    //         if (present)
+                    //         {
+                    //             for (auto& c: user["contacts"])
+                    //             {
+                    //                 if (user["id"] == senderID)
+                    //                 {
+                    //                     user["chat"].push_back(content);
+                    //                 }
+                    //             }
+                    //             break;
+                    //         }
+                    //         user["contacts"].push_back(newcontact);
+                    //         for (auto& c: user["contacts"])
+                    //         {
+                    //             if (user["id"] == senderID)
+                    //             {
+                    //                 user["chat"].push_back(content);
+                    //             }
+                    //         }
+                    //         break;
+                    //
+                    //     }
+                    // }
+                    // ofstream filewrite(contactsfilepath);
+                    // filewrite<<contactsArr.dump(4);
+                    // fileread.close();
+                    // filewrite.close();
 
                 }
                 else if (choice == 2) {
@@ -195,7 +313,45 @@ int main() {
         else if (mainChoice == 3) {
             break;
         }
+        vector <Contact> sortedcontacts = currentUser->getSortedContacts();
+
+        json contactList = json::array();
+        for (const auto& contact : sortedcontacts) {
+            contactList.push_back(contact.to_json());
+        }
+
+        json finalJson;
+        finalJson["contact list"] = contactList;
+
+        // Write to file
+        ofstream outFile("contact.json");
+        outFile << finalJson.dump(4); // Pretty print with 4-space indentation
+        outFile.close();
+
     }
+
+    // json contactobj;
+    // json contactarray = {{"contact list"}, json::array()};
+    // for (int i =0; i<currentUser->getSortedContacts().size(); i++)
+    // {
+    //     contactobj={{"contact ID", sortedcontacts[i].contactID},
+    //             {"messages", json::array()}};
+    //     json messageobj;
+    //     for (int j =0; j < sortedcontacts[i].messages.size();j++)
+    //     {
+    //         messageobj= {
+    //             {"senderid", sortedcontacts[i].messages[j].senderID},
+    //                 {"receiverid", sortedcontacts[i].messages[j].receiverID},
+    //                 {"content", sortedcontacts[i].messages[j].content}};
+    //         contactobj["messages"][j].push_back(messageobj);
+    //     }
+    //     contactarray["contact list"].push_back(contactobj);
+    //
+    // }
+    // ofstream fileContact(contactsfilepath);
+    // fileContact << contactarray;
+    // fileContact.close();
+
 
     return 0;
 }

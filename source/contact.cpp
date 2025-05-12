@@ -14,22 +14,22 @@ using json = nlohmann::json;
             messages.push_back(msg);
             messageCount++;
         }
-    
+
         int Contact::getMessageCount() { return messageCount; }
-    
+
         vector<Message> Contact::getMessages() { return messages; }
     
-        json Contact::toJson() const {
-            json jsonContact;
-            jsonContact["contactID"] = contactID;
-            jsonContact["messageCount"] = messageCount;
-            for (const auto& msg : messages) {
-                jsonContact["messages"].push_back(msg.toJson());
-            }
-            filemanger::addToJsonfile(jsonContact,"contact.json");
-
-            return jsonContact;
-        }
+        // json Contact::toJson() const {
+        //     json jsonContact;
+        //     jsonContact["contactID"] = contactID;
+        //     jsonContact["messageCount"] = messageCount;
+        //     for (const auto& msg : messages) {
+        //         jsonContact["messages"].push_back(msg.toJson());
+        //     }
+        //     filemanger::addToJsonfile(jsonContact,"contact.json");
+        //
+        //     return jsonContact;
+        // }
 
 
 

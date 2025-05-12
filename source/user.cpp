@@ -1,13 +1,16 @@
 #include "user.h"
 #include "Contact.h"
 #include "filemanger.h"
+#include "fstream"
 #include "nlohmann/json.hpp"
 vector<User> User::users;
 json User::usersArrJson;
 using namespace std;
-
-
+string contactfilepath ="C:/Users/user/CLionProjects/ds/contact.json";
+string usersfilepath ="C:/Users/user/CLionProjects/ds/users.json";
 // Constructor
+
+
 User::User(const string& id, const string& uname, const string& pwd)
 : ID(id), username(uname), password(pwd) {}
 
@@ -36,6 +39,9 @@ void User::Userset_password(string password)
 void User::addContact(const string& userId) {
     if (contacts.find(userId) == contacts.end()) {
         contacts[userId] = Contact(userId);
+
+
+
         cout << "Contact added successfully!" << endl;
         return;
     }
@@ -51,14 +57,14 @@ Contact* User::findContact(const string& userId) {
     return it != contacts.end() ? &it->second : nullptr;
 }
 
-// vector<Contact> User::getSortedContacts() const {
-//     vector<Contact> sortedContacts;
-//     for (const auto& pair : contacts) {
-//         sortedContacts.push_back(pair.second);
-//     }
-//     sort(sortedContacts.begin(), sortedContacts.end());
-//     return sortedContacts;
-// }
+vector<Contact> User::getSortedContacts() const {
+    vector<Contact> sortedContacts;
+    for (const auto& pair : contacts) {
+        sortedContacts.push_back(pair.second);
+    }
+    sort(sortedContacts.begin(), sortedContacts.end());
+    return sortedContacts;
+}
 
 void User::displayContactsByMessageCount() {
     vector<Contact> sortedContacts;
@@ -148,7 +154,7 @@ while (!copy.empty()) {
 
 // void User::readfromjson(string userid)
 // {
-//     json j = filemanger::Readfromjson("Users.json");
+//     json j = filemanger::Readfromjson("users.json");
 //     for (auto i : j["users"])
 //     {
 //         if(i["ID"] == userid)
@@ -162,7 +168,7 @@ while (!copy.empty()) {
 void User::readfromjson(string userid)
 {
     try {
-        json j = filemanger::Readfromjson("Users.json");
+        json j = filemanger::Readfromjson("users.json");
         if (j.contains("users")) {
             for (auto i : j["users"]) {
                 if(i["ID"] == userid) {

@@ -13,7 +13,7 @@ int system_manager::id_counter = 0;
 system_manager::system_manager()
 {
     //load_users_from_file(); // Load existing users when the system starts
-    json users = filemanger::Readfromjson("Users.json");
+    json users = filemanger::Readfromjson("users.json");
     for (auto j:users["users"])
     {
         User newUser(j["ID"],j["username"],j["password"]);

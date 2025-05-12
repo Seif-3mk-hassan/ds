@@ -14,6 +14,12 @@ class Message {
     Message();
     bool isFavorite();
     string getSenderId() const;
-    json toJson() const;
+    json to_json() const {
+        return json{
+                {"senderid", senderID},
+                {"receiverid", receiverID},
+                {"content", content}
+        };
+    }
 };
     
