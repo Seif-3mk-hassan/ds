@@ -14,6 +14,7 @@
 #include "headers/user.h"
 #include "headers/system_manger.h"
 #include "login.h"
+#include <fstream>
 //#include<vector>
 //#include<D:/ggggg/vcpkg/packages/nlohmann-json_x64-windows/include/nlohmann/json.hpp>
 using namespace std;
@@ -26,6 +27,15 @@ using namespace std;
 #define vi vector<ll>
 
 
+
+
+// Add prototypes
+void loadUsers();
+void saveUsers();
+void loadMessages();
+void saveMessages();
+
+
 //using json = nlohmann::json;
 
 struct Node {
@@ -35,10 +45,57 @@ struct Node {
     vector<string> friends;
     stack<string> messages;
 };
+
+void loadUsers() {
+    ifstream in("C:\\Users\\seifd\\OneDrive\\Documents\\GitHub\\ds\\Users.txt");
+    User::users.clear();  // Clear existing users before loading new ones
+    string id, user, pass;
+    while (in >> id >> user >> pass) {
+        User u(id, user, pass);
+        User::users.push_back(u);
+    }
+    in.close();
+}
+
+
+void saveUsers() {
+    ofstream out("C:\\Users\\seifd\\OneDrive\\Documents\\GitHub\\ds\\Users.txt");
+    if (!out) {
+        cout << "Error opening Users.txt!" << endl;  // Check if file opened correctly
+        return;
+    }
+    for (auto& u : User::users) {
+        u.saveUser(out);
+       
+    }
+    out.close();
+    cout << "Users saved successfully.\n";
+}
+
+void loadMessages() {
+    ifstream in("C:\\Users\\seifd\\OneDrive\\Documents\\GitHub\\ds\\contact.txt");
+    for (auto& u : User::users) {
+        u.loadContactData(in);
+        in.clear(); in.seekg(0); // rewind for next user
+    }
+    in.close();
+}
+
+void saveMessages() {
+    ofstream out("C:\\Users\\seifd\\OneDrive\\Documents\\GitHub\\ds\\contact.txt");
+    for (auto& u : User::users) {
+        u.saveContactData(out);
+    }
+    out.close();
+}
+
+
 int main() {
     vector<User>& users = User::users;
     User* currentUser = nullptr;
     int mainChoice;
+    loadUsers();
+    loadMessages();
 
     while (true) {
         cout << "\nMain Menu:\n";
@@ -50,13 +107,33 @@ int main() {
             cout << "Enter username: "; cin >> uname;
             cout << "Enter password: "; cin >> pwd;
 
-            string id = "U" + to_string(users.size() + 1);
+            // Check for duplicate username
+            bool usernameExists = false;
+            for (auto& u : User::users) {
+                if (u.getUsername() == uname) {
+                    usernameExists = true;
+                    break;
+                }
+            }
+
+            if (usernameExists) {
+                cout << "Username already exists! Try a different one.\n";
+                continue;  // Skip to the next iteration of the main menu.
+            }
+
+            // Create a unique ID based on users' size
+            string id = "U" + to_string(User::users.size() + 1);
             User newUser(id, uname, pwd);
-            users.push_back(newUser);
+            User::users.push_back(newUser);
 
             cout << "Registration successful.\n";
 
+            // Save the users to the file once after adding the new user
+            saveUsers();
         }
+
+
+
         else if (mainChoice == 2) {
             string uname, pwd;
             cout << "Enter username: "; cin >> uname;
@@ -179,7 +256,7 @@ int main() {
                     getline(cin, id);
                     Contact* c = currentUser->findContact(id);
                     if (c) {
-                        cout << "Contact found: " << c->contactID << endl;
+                        cout << "Contact found: " << c->getId() << endl;
                     }
                     else {
                         cout << "NOT FOUND\n";
@@ -196,7 +273,9 @@ int main() {
             break;
         }
     }
+    saveUsers();
+    saveMessages();
+
 
     return 0;
 }
-

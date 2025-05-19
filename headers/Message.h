@@ -1,19 +1,21 @@
+// Message.h
 #pragma once
 #include <string>
-#include "nlohmann//json.hpp"
 using namespace std;
-using json = nlohmann::json;
 
 class Message {
-    public:
+public:
     string messageID;
     string senderID;
     string receiverID;
     string content;
-    //timestamp time;
-    Message();
-    bool isFavorite();
+
+    Message();  // Default constructor
+    Message(const string& sender, const string& receiver, const string& content);
+
+    bool isFavorite();  // Stub for isFavorite
     string getSenderId() const;
-    json toJson() const;
+    string getReceiverId() const;
+    string getContent() const;
+   
 };
-    

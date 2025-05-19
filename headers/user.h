@@ -1,62 +1,45 @@
-# pragma once 
-#include <iostream>
-#include <algorithm>
-#include <vector>
-#include <map>
+#pragma once
+#include <string>
 #include <stack>
 #include <queue>
-#include "Message.h"       
-#include "Contact.h"      
-#include "nlohmann/json.hpp"
-#include "filemanger.h"
+#include <map>
+#include "contact.h"
+#include "message.h"
 
-using json = nlohmann::json;
 using namespace std;
 
-class User :public filemanger{
-    string ID;
+class User {
+    string id;
     string username;
     string password;
     map<string, Contact> contacts;
-    vector<Message> receivedMessages;
-    
-    queue<Message> favoriteMessages;
+    queue<Message> favorites;
+
 public:
+    static vector<User> users;
     stack<Message> sentMessages;
-    static vector <User> users;
-    static json usersArrJson;
 
-    // Constructors
-    User() = default;
-    User(const string& id, const string& uname, const string& pwd);
+    User() {}
+    User(string id, string username, string password);
 
-    // Getters
     string getId() const;
     string getUsername() const;
     string getPassword() const;
 
-    // Contact Operations
-    void addContact(const string& userId);
-    bool removeContact(const string& userId);
-    Contact* findContact(const string& userId);
-    vector<Contact> getSortedContacts() const;
-    void displayContactsByMessageCount();
-    // Message Operations
-    void receiveMessage(const Message& message);
-    const vector<Message>& getReceivedMessages() const;
-    void sendMessage(string content, Contact* reciever);
+    void sendMessage(const string& content, Contact* contact);
+    void receiveMessage(const Message& msg);
     void undoMessage();
     void viewMessages();
-    void viewMessageByContact(string );
-    //favourites    
-    void addMessageToFavorites(Message);
+    void viewMessageByContact(const string& contactID);
+    void addMessageToFavorites(const Message& msg);
     void removeOldestFavorite();
-    void viewFavoriteMessages() const;
+    void viewFavoriteMessages();
+    void addContact(const string& id);
+    bool removeContact(const string& id);
+    Contact* findContact(const string& id);
+    void displayContactsByMessageCount();
 
-    // Save and Load
-    void readfromjson(string userid);
-
-    void set_id(string);
-    void set_username(string);
-    void Userset_password(string);
+    void saveUser(ofstream& out);
+    void loadContactData(ifstream& in);
+    void saveContactData(ofstream& out);
 };

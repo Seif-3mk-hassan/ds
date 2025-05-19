@@ -80,20 +80,5 @@ User login::mainMenu()
     return u;
 }
 
-void login::saveTofile(User U)
-{
-    json jsonUser;
-    for (auto j : User::usersArrJson["users"]["ID"])
-    {
-        if(j == U.getId())
-        {
-            cout << "user already exists\n";
-            return;
-        }
-    }
-    jsonUser["ID"] = U.getId();
-    jsonUser["username"] = U.getUsername();
-    jsonUser["password"] = U.getPassword();
-    User::usersArrJson["users"].push_back(jsonUser);
-    U.addToJsonfile(User::usersArrJson,"Users.json");
-}
+
+

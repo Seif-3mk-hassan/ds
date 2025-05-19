@@ -5,19 +5,21 @@ using json = nlohmann::json;
 
 Message::Message() : messageID(""), senderID(""), receiverID(""), content("") {}
 
+Message::Message(const string& sender, const string& receiver, const string& content)
+    : senderID(sender), receiverID(receiver), content(content), messageID("") {}
+
 bool Message::isFavorite() {
-    return false; // Implement this based on your requirements
+    return false;  // You can implement this logic as needed
 }
 
 string Message::getSenderId() const {
     return senderID;
 }
 
-json Message::toJson() const {
-    json j;
-    j["messageID"] = messageID;
-    j["senderID"] = senderID;
-    j["receiverID"] = receiverID;
-    j["content"] = content;
-    return j;
+string Message::getReceiverId() const {
+    return receiverID;
+}
+
+string Message::getContent() const {
+    return content;
 }

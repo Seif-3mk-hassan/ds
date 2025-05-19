@@ -1,181 +1,181 @@
 #include "user.h"
-#include "Contact.h"
-#include "filemanger.h"
-#include "nlohmann/json.hpp"
-vector<User> User::users;
-json User::usersArrJson;
+#include <iostream>
+#include <fstream>
+#include <algorithm>
+#include <map>
 using namespace std;
 
+vector<User> User::users;
 
-// Constructor
-User::User(const string& id, const string& uname, const string& pwd)
-: ID(id), username(uname), password(pwd) {}
+User::User(string id, string username, string password)
+    : id(id), username(username), password(password) {}
 
-string User::getId() const { return ID; }
+string User::getId() const { return id; }
 string User::getUsername() const { return username; }
 string User::getPassword() const { return password; }
 
+void User::sendMessage(const string& content, Contact* contact) {
+   
+    Message msg{ id, contact->getId(), content };
 
-
-void User::set_id(string id)
-{
-    ID = id;
-}
-
-void User::set_username(string username)
-{
-    this->username = username;
-}
-
-void User::Userset_password(string password)
-{
-    this->password = password;
-}
-
-
-void User::addContact(const string& userId) {
-    if (contacts.find(userId) == contacts.end()) {
-        contacts[userId] = Contact(userId);
-        cout << "Contact added successfully!" << endl;
-        return;
-    }
-    cout<<"The contact isn't availabe"<<endl;   
-}
-
-bool User::removeContact(const string& userId) {
-    return contacts.erase(userId) > 0;
-}
-
-Contact* User::findContact(const string& userId) {
-    auto it = contacts.find(userId);
-    return it != contacts.end() ? &it->second : nullptr;
-}
-
-// vector<Contact> User::getSortedContacts() const {
-//     vector<Contact> sortedContacts;
-//     for (const auto& pair : contacts) {
-//         sortedContacts.push_back(pair.second);
-//     }
-//     sort(sortedContacts.begin(), sortedContacts.end());
-//     return sortedContacts;
-// }
-
-void User::displayContactsByMessageCount() {
-    vector<Contact> sortedContacts;
-    for (const auto& [id, contact] : contacts) {
-        sortedContacts.push_back(contact);
-    }
-
-    sort(sortedContacts.begin(), sortedContacts.end(),
-        [](const Contact& a, const Contact& b) {
-            return a.messageCount > b.messageCount;
-        });
-
-    for (const auto& contact : sortedContacts) {
-        cout << contact.contactID << ": "
-             << contact.messageCount<< endl;
-    }
-}
-
-void User::receiveMessage(const Message& message) {
-    receivedMessages.push_back(message);
-    auto contact = findContact(message.getSenderId());
-    if (contact) {
-        contact->addMessage(message);
-    }
-}
-
-const vector<Message>& User::getReceivedMessages() const {
-    return receivedMessages;
-}
-
-void User::sendMessage(string content, Contact* reciever) {
-    if(reciever==nullptr)return;
-    Message msg;
-    msg.senderID = getId();
-    msg.content = content;
-    msg.receiverID = reciever->contactID;
+   
     sentMessages.push(msg);
+
+    
+    contact->addMessage(msg);
 }
+
+
+void User::receiveMessage(const Message& msg) {
+    if (contacts.find(msg.senderID) == contacts.end()) {
+        addContact(msg.senderID);
+    }
+    contacts[msg.senderID].addMessage(msg);
+    cout << "Message received from " << msg.senderID << ": " << msg.content << endl;
+}
+
+
 
 void User::undoMessage() {
-    if(sentMessages.empty()) return;
-    sentMessages.pop();
+    if (sentMessages.empty()) return;
+    Message last = sentMessages.top(); sentMessages.pop();
+    if (contacts.count(last.receiverID)) {
+        vector<Message>& msgs = contacts[last.receiverID].getMessages();
+        for (auto it = msgs.rbegin(); it != msgs.rend(); ++it) {
+            if (it->content == last.content && it->senderID == last.senderID) {
+                msgs.erase(next(it).base());
+                break;
+            }
+        }
+    }
 }
 
 void User::viewMessages() {
+    // Show sent messages first
     stack<Message> temp = sentMessages;
-    while(!temp.empty()) {
-        cout << temp.top().content << endl;
-        temp.pop();
+    cout << "Sent messages:\n";
+    while (!temp.empty()) {
+        Message m = temp.top(); temp.pop();
+        cout << "To " << m.receiverID << ": " << m.content << endl;
+    }
+
+    // Show received messages (from contacts)
+    
+}
+
+
+void User::viewMessageByContact(const string& contactID) {
+    if (contacts.count(contactID)) {
+        cout << "Sent messages to " << contactID << ":\n";
+        stack<Message> tempSent = sentMessages;
+        while (!tempSent.empty()) {
+            Message m = tempSent.top();
+            tempSent.pop();
+            if (m.receiverID == contactID) {
+                cout << m.senderID << " -> " << m.receiverID << ": " << m.content << endl;
+            }
+        }
+
+        cout << "Received messages from " << contactID << ":\n";
+        for (const Message& m : contacts[contactID].getMessages()) {
+            if (m.senderID == contactID) {
+                cout << m.senderID << " -> " << m.receiverID << ": " << m.content << endl;
+            }
+        }
+    }
+    else {
+        cout << "No messages with this contact.\n";
     }
 }
 
-void User::viewMessageByContact(string key) {
-    if (contacts.find(key) == contacts.end()) {
-        cout << "Contact not found.\n";
-        return;
-    }
-    for(int i = 0; i < receivedMessages.size(); i++) {
-        if(receivedMessages[i].getSenderId() == contacts[key].contactID) 
-        cout << receivedMessages[i].content;
-    }
-}
 
-//==========dealing with favourites==========
-void User::addMessageToFavorites(Message msg) {
-    favoriteMessages.push(msg); 
+
+
+
+
+
+void User::addMessageToFavorites(const Message& msg) {
+    favorites.push(msg);
 }
 
 void User::removeOldestFavorite() {
-    if (!favoriteMessages.empty()) {
-        favoriteMessages.pop();
-    } 
-    else {cout << "no favorite messages to remove\n";}//handling in another time
+    if (!favorites.empty()) favorites.pop();
 }
 
-void User::viewFavoriteMessages() const {
-    if (favoriteMessages.empty()) {
-        cout << "No favorite messages.\n";//handling in another time
-        return;
+void User::viewFavoriteMessages() {
+    queue<Message> temp = favorites;
+    while (!temp.empty()) {
+        Message m = temp.front(); temp.pop();
+        cout << m.senderID << " -> " << m.receiverID << ": " << m.content << endl;
     }
-queue<Message> copy = favoriteMessages; //  3 4 5
-while (!copy.empty()) {
-    cout << copy.front().content << "\n";
-    copy.pop();}
+}
+
+void User::addContact(const string& contactID) {
+    if (contacts.find(contactID) == contacts.end()) {
+        contacts[contactID] = Contact(contactID); // Properly initialize the contact
+    }
 }
 
 
-// void User::readfromjson(string userid)
-// {
-//     json j = filemanger::Readfromjson("Users.json");
-//     for (auto i : j["users"])
-//     {
-//         if(i["ID"] == userid)
-//         {
-//             username = i["username"];
-//             password = i["password"];
-//         }
-//     }
-// }
+bool User::removeContact(const string& id) {
+    return contacts.erase(id) > 0;
+}
 
-void User::readfromjson(string userid)
-{
-    try {
-        json j = filemanger::Readfromjson("Users.json");
-        if (j.contains("users")) {
-            for (auto i : j["users"]) {
-                if(i["ID"] == userid) {
-                    username = i["username"];
-                    password = i["password"];
-                    return;
-                }
-            }
+Contact* User::findContact(const string& id) {
+    if (contacts.count(id)) return &contacts[id];
+    return nullptr;
+}
+
+void User::displayContactsByMessageCount() {
+    vector<pair<string, int>> vec;
+    for (auto& [id, c] : contacts) {
+        vec.push_back({ id, c.getMessageCount() });  // Use getMessageCount() to get the number of messages
+    }
+    sort(vec.begin(), vec.end(), [](auto& a, auto& b) {
+        return a.second > b.second;
+        });
+    for (auto& [id, count] : vec) {
+        cout << "Contact ID: " << id << " | Messages: " << count << endl;
+    }
+}
+
+void User::saveUser(ofstream& out) {
+    out << id << ' ' << username << ' ' << password << '\n';
+}
+
+void User::saveContactData(ofstream& out) {
+    for (const auto& pair : contacts) {
+        const string& cid = pair.first;
+        const vector<Message>& msgs = pair.second.getMessages();
+        for (const Message& m : msgs) {
+            out << m.senderID << " " << m.receiverID << " " << m.content << endl;
         }
-    } catch (const json::exception& e) {
-        cout << "Error reading JSON: " << e.what() << endl;
     }
 }
-//==============================
+
+
+void User::loadContactData(ifstream& in) {
+    string senderId, receiverId, msg;
+    while (in >> senderId >> receiverId) {
+        in.ignore();  // Skip space before message
+        getline(in, msg);
+
+        Message m{ senderId, receiverId, msg };
+
+        // If the message is from this user
+        if (senderId == this->id) {
+            addContact(receiverId);  // Ensure the contact exists
+            sentMessages.push(m);    // Add to sent messages
+            contacts[receiverId].addMessage(m);  // Add to receiver's contact
+        }
+        else if (receiverId == this->id) {  // If the message is for this user
+            addContact(senderId);   // Ensure the contact exists
+            contacts[senderId].addMessage(m);  // Add to the sender's contact
+        }
+    }
+}
+
+
+
 
 

@@ -1,27 +1,20 @@
 #pragma once
-#include <iostream>
 #include <string>
 #include <vector>
-#include "nlohmann/json.hpp"
 #include "Message.h"
-using namespace std;
-using json = nlohmann::json;
-
-class Message; // Forward declaration
 
 class Contact {
-    public:
-        string contactID;
-        vector<Message> messages;
-        int messageCount;
+private:
+    std::string contactID;
+    std::vector<Message> messages;
 
-        Contact();
-        Contact(const string& id);
-        Contact(const string& id, string& username);
-        void addMessage(Message);
-        int getMessageCount();
-        vector<Message> getMessages();
-        nlohmann::json toJson() const;
-        void addContactToJsonfile(nlohmann::json);
-        nlohmann::json ReadContactsfromjson(ifstream);
+public:
+    Contact();  // Default constructor
+    Contact(std::string contactID);  // Parameterized constructor
+    std::string getId() const;  // Getter for contactID
+    int getMessageCount() const;  // Return the number of messages
+    vector<Message>& getMessages();                 // for modifying access
+    const vector<Message>& getMessages() const;     // for read-only access
+    
+    void addMessage(const Message& message);  // Add a message to the contact
 };
