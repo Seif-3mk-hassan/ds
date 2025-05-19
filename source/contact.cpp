@@ -3,12 +3,12 @@
 #include <vector>
 #include <string>
 #include "Message.h"
-#include <nlohmann/json.hpp>  // Assuming you're using JSON
+//#include <nlohmann/json.hpp>  
 
 using namespace std;
-using json = nlohmann::json;
+//using json = nlohmann::json;
 
-// Default constructor
+
 Contact::Contact() : contactID(""), messages() {}
 
 Contact::Contact(string contactID) : contactID(contactID) {
@@ -33,3 +33,5 @@ void Contact::addMessage(const Message& message) {
 const vector<Message>& Contact::getMessages() const {
     return messages;
 }
+bool Contact::isHidden() const { return hidden; }
+void Contact::setHidden(bool h) { hidden = h; }

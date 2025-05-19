@@ -1,8 +1,10 @@
 #include "user.h"
+#include "contact.h"
 #include <iostream>
 #include <fstream>
 #include <algorithm>
 #include <map>
+
 using namespace std;
 
 vector<User> User::users;
@@ -15,15 +17,16 @@ string User::getUsername() const { return username; }
 string User::getPassword() const { return password; }
 
 void User::sendMessage(const string& content, Contact* contact) {
-   
+    if (contact == nullptr) {
+        cout << "Error: Cannot send message. Contact does not exist or is hidden." << endl;
+        return;
+    }
+
     Message msg{ id, contact->getId(), content };
-
-   
     sentMessages.push(msg);
-
-    
     contact->addMessage(msg);
 }
+
 
 
 void User::receiveMessage(const Message& msg) {
@@ -118,24 +121,37 @@ void User::addContact(const string& contactID) {
 
 
 bool User::removeContact(const string& id) {
-    return contacts.erase(id) > 0;
+    if (contacts.count(id)) {
+        contacts[id].setHidden(true);  // mark as hidden
+        return true;
+    }
+    return false;
 }
 
+
 Contact* User::findContact(const string& id) {
-    if (contacts.count(id)) return &contacts[id];
+    auto it = contacts.find(id);
+    if (it != contacts.end() && !it->second.isHidden()) {
+        return &it->second;
+    }
     return nullptr;
 }
 
+
 void User::displayContactsByMessageCount() {
     vector<pair<string, int>> vec;
-    for (auto& [id, c] : contacts) {
-        vec.push_back({ id, c.getMessageCount() });  // Use getMessageCount() to get the number of messages
+    for (const auto& contact_pair : contacts) {
+        const Contact& contact = contact_pair.second;
+        if (!contact.isHidden()) {  // Only include visible contacts
+            vec.push_back({ contact_pair.first, contact.getMessageCount() });
+        }
     }
-    sort(vec.begin(), vec.end(), [](auto& a, auto& b) {
+    sort(vec.begin(), vec.end(), [](const auto& a, const auto& b) {
         return a.second > b.second;
         });
-    for (auto& [id, count] : vec) {
-        cout << "Contact ID: " << id << " | Messages: " << count << endl;
+
+    for (const auto& pair : vec) {
+        cout << "Contact ID: " << pair.first << " | Messages: " << pair.second << endl;
     }
 }
 
@@ -146,31 +162,49 @@ void User::saveUser(ofstream& out) {
 void User::saveContactData(ofstream& out) {
     for (const auto& pair : contacts) {
         const string& cid = pair.first;
-        const vector<Message>& msgs = pair.second.getMessages();
+        const Contact& contact = pair.second;
+        out << "CONTACT " << cid << " " << contact.isHidden() << '\n';
+        const vector<Message>& msgs = contact.getMessages();
         for (const Message& m : msgs) {
-            out << m.senderID << " " << m.receiverID << " " << m.content << endl;
+            out << m.senderID << " " << m.receiverID << " " << m.content << '\n';
         }
     }
 }
 
 
 void User::loadContactData(ifstream& in) {
-    string senderId, receiverId, msg;
-    while (in >> senderId >> receiverId) {
-        in.ignore();  // Skip space before message
-        getline(in, msg);
-
-        Message m{ senderId, receiverId, msg };
-
-        // If the message is from this user
-        if (senderId == this->id) {
-            addContact(receiverId);  // Ensure the contact exists
-            sentMessages.push(m);    // Add to sent messages
-            contacts[receiverId].addMessage(m);  // Add to receiver's contact
+    string line;
+    while (getline(in, line)) {
+        if (line.rfind("CONTACT ", 0) == 0) {
+            // Line starts with CONTACT: parse hidden status
+            istringstream iss(line);
+            string tag, contactId;
+            bool hidden;
+            iss >> tag >> contactId >> hidden;
+            addContact(contactId);
+            contacts[contactId].setHidden(hidden);
         }
-        else if (receiverId == this->id) {  // If the message is for this user
-            addContact(senderId);   // Ensure the contact exists
-            contacts[senderId].addMessage(m);  // Add to the sender's contact
+        else {
+            // It's a message line: parse and load message
+            istringstream iss(line);
+            string senderId, receiverId;
+            iss >> senderId >> receiverId;
+            string msg;
+            getline(iss, msg); // the rest is the message content
+            if (!msg.empty() && msg[0] == ' ') msg.erase(0, 1);
+
+
+            Message m{ senderId, receiverId, msg };
+
+            if (senderId == this->id) {
+                addContact(receiverId);
+                sentMessages.push(m);
+                contacts[receiverId].addMessage(m);
+            }
+            else if (receiverId == this->id) {
+                addContact(senderId);
+                contacts[senderId].addMessage(m);
+            }
         }
     }
 }

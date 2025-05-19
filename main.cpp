@@ -183,7 +183,7 @@ int main() {
                     currentUser->addContact(receiverId);  // Rule: only add if messaged
                     Contact* contact = currentUser->findContact(receiverId);
                     currentUser->sendMessage(content, contact);
-
+                    if (contact == nullptr) { continue; }
                     // Deliver to receiver if exists
                     for (User& other : users) {
                         if (other.getId() == receiverId) {
@@ -215,17 +215,18 @@ int main() {
                     currentUser->viewMessageByContact(contactId);
 
                 }
-                else if (choice == 5) {
+                else if (choice == 5) {                 //  Add to Favourites
                     if (!currentUser->sentMessages.empty()) {
-                        Message msg = currentUser->sentMessages.top();
-                        currentUser->addMessageToFavorites(msg);
+                        Message msg = currentUser->sentMessages.top();   
+                        currentUser->sentMessages.pop();                 
+                        currentUser->addMessageToFavorites(msg);         
                         cout << "Message added to favorites.\n";
                     }
                     else {
                         cout << "No message to add.\n";
                     }
-
                 }
+
                 else if (choice == 6) {
                     currentUser->removeOldestFavorite();
 
