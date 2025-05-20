@@ -4,7 +4,6 @@
 
 #ifndef FILEMANGER_H
 #define FILEMANGER_H
-#include "nlohmann/json.hpp"
 #include <string>
 using namespace std;
 
@@ -12,9 +11,9 @@ using namespace std;
 
 class filemanger {
 
-      public:
-            static void addToJsonfile(nlohmann::json jsonObj, const string& jsonFile);
-            static nlohmann::json Readfromjson(const string & jsonfile);
+      // public:
+      //       static void addToJsonfile(nlohmann::json jsonObj, const string& jsonFile);
+      //       static nlohmann::json Readfromjson(const string & jsonfile);
 
 
 };

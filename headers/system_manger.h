@@ -1,11 +1,9 @@
 #pragma once
-#include "nlohmann/json.hpp"
 #include<iostream>
 #include<fstream>
 #include<unordered_map>
 #include "user.h"
 using namespace std;
-using json = nlohmann::json;
 
 class system_manager
 {   

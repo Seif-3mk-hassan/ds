@@ -1,26 +1,24 @@
 #include "../headers/system_manger.h"
-#include "nlohmann/json.hpp"
 #include <sstream>
 #include <iostream>
 #include <fstream>
 #include "filemanger.h"
 #include "user.h"
 
-using json = nlohmann::json;
 
 int system_manager::id_counter = 0;
 
-system_manager::system_manager()
-{
-    //load_users_from_file(); // Load existing users when the system starts
-    json users = filemanger::Readfromjson("Users.json");
-    for (auto j:users["users"])
-    {
-        User newUser(j["ID"],j["username"],j["password"]);
-        User::users.push_back(newUser);
-    }
-
-}
+// system_manager::system_manager()
+// {
+//     //load_users_from_file(); // Load existing users when the system starts
+//     json users = filemanger::Readfromjson("Users.json");
+//     for (auto j:users["users"])
+//     {
+//         User newUser(j["ID"],j["username"],j["password"]);
+//         User::users.push_back(newUser);
+//     }
+//
+// }
 
 User system_manager::addUser(string username, string password)
 {

@@ -1,7 +1,5 @@
 #include "Message.h"
-#include "nlohmann/json.hpp"
 using namespace std;
-using json = nlohmann::json;
 
 Message::Message() : messageID(""), senderID(""), receiverID(""), content("") {}
 

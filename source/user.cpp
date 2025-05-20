@@ -281,6 +281,85 @@ void User::clearAllData() {
     }
 }
 
+// void User::saveFavorites(const string& filename)
+// {
+//     cout<<"inside savefavourite";
+//     ofstream in(filename);
+//     queue<Message> tmp = favorites;
+//     while (!tmp.empty())
+//     {
+//         in<< tmp.front().senderID <<' '<<tmp.front().receiverID<<' '<<tmp.front().content<<' '<<tmp.front().messageID;
+//         tmp.pop();
+//     }
+//     in.close();
+//     cout<< favorites.size()<<endl;
+// }
+void User::saveFavorites(const string& filename) const {
+    ofstream out(filename);
+    if (!out.is_open()) {
+        cout << "Failed to open file to save favorites.\n";
+        return;
+    }
+
+    queue<Message> temp = favorites;
+    while (!temp.empty()) {
+        const Message& m = temp.front();
+        out << m.messageID << "|" << m.senderID << "|" << m.receiverID << "|" << m.content << "\n";
+        temp.pop();
+    }
+
+    out.close();
+}
+
+// void User::loadFavourites(const string& filename)
+// {
+//     fstream out(filename);
+//     string line;
+//     while (getline(out, line))
+//     {
+//         istringstream ss(line);
+//         string messageID, senderID, receiverID, content;
+//
+//         getline(ss, messageID, ' ');
+//         getline(ss, senderID, ' ');
+//         getline(ss, receiverID, ' ');
+//         getline(ss, content);
+//
+//         Message favm (messageID,senderID,receiverID,content);
+//         favorites.push(favm);
+//
+//     }
+//     cout<<"favorites loaded successfully!";
+//  out.close();
+// }
+void User::loadFavorites(const string& filename) {
+    ifstream in(filename);
+    if (!in.is_open()) {
+        cout << "No favorites file found for this user.\n";
+        return;
+    }
+
+    favorites = queue<Message>(); // Clear current favorites
+
+    string line;
+    while (getline(in, line)) {
+        istringstream ss(line);
+        string messageID, senderID, receiverID, content;
+
+        getline(ss, messageID, '|');
+        getline(ss, senderID, '|');
+        getline(ss, receiverID, '|');
+        getline(ss, content);
+
+        Message msg(messageID, senderID, receiverID, content);
+        msg.messageID = messageID;
+        favorites.push(msg);
+    }
+
+    in.close();
+}
+
+
 
 
 

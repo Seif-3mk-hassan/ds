@@ -12,7 +12,7 @@
 #include<deque>
 #include<string>
 #include "headers/user.h"
-#include "headers/system_manger.h"
+#include "system_manger.h"
 #include "login.h"
 #include <fstream>
 //#include<vector>
@@ -47,7 +47,7 @@ struct Node {
 };
 
 void loadUsers() {
-    ifstream in("C:/Users/Seif2/CLionProjects/ds2/Users.txt");
+    ifstream in("Users.txt");
     User::users.clear();  // Clear existing users before loading new ones
     string id, user, pass;
     while (in >> id >> user >> pass) {
@@ -59,7 +59,7 @@ void loadUsers() {
 
 
 void saveUsers() {
-    ofstream out("C:/Users/Seif2/CLionProjects/ds2/Users.txt");
+    ofstream out("Users.txt");
     if (!out) {
         cout << "Error opening Users.txt!" << endl;  // Check if file opened correctly
         return;
@@ -74,7 +74,7 @@ void saveUsers() {
 
 void loadMessages() {
     for (User& u : User::users) {
-        string filename = "C:/Users/Seif2/CLionProjects/ds2/contacts_" + u.getId() + ".txt";
+        string filename = "contacts_" + u.getId() + ".txt";
         u.loadContactData(filename);
     }
 }
@@ -86,10 +86,38 @@ void loadMessages() {
 
 void saveMessages() {
     for (User& u : User::users) {
-        string filename = "C:/Users/Seif2/CLionProjects/ds2/contacts_" + u.getId() + ".txt";
+        string filename = "contacts_" + u.getId() + ".txt";
         u.saveContactData(filename);
     }
     cout << "All contacts saved successfully.\n";
+}
+// void loadfavourites() {
+//     for (User& u : User::users) {
+//         string filename = "dsfinal/favorites_" + u.getId() + ".txt";
+//         u.loadFavourites(filename);
+//     }
+// }
+// void savefavorites()
+// {
+//     for (User& u: User::users)
+//     {
+//         string filename = "dsfinal/favorites_" + u.getId()+ ".txt";
+//         u.saveFavorites(filename);
+//     }
+// }
+void loadFavorites() {
+    for (User& u : User::users) {
+        string filename = "favorites" + u.getId() + ".txt";
+        u.loadFavorites(filename);
+    }
+}
+
+void saveFavorites() {
+    for (User& u : User::users) {
+        string filename = "favorites" + u.getId() + ".txt";
+        u.saveFavorites(filename);
+    }
+    cout << "Favorites saved.\n";
 }
 
 
@@ -102,7 +130,7 @@ int main() {
     char mainChoice;
     loadUsers();
     loadMessages();
-
+    loadFavorites();
     while (true) {
         cout << "\nMain Menu:\n";
         cout << "1. Register\n2. Login\n3. Exit\nChoice: ";
@@ -317,6 +345,7 @@ int main() {
     }
     saveUsers();
     saveMessages();
+    saveFavorites();
 
 
     return 0;

@@ -47,5 +47,9 @@ public:
     void saveUser(ofstream& out);
     void loadContactData(const string& filename);
     void saveContactData(const string& filename) const;
+    // void saveFavorites(const string& filename);
+    // void loadFavourites(const string& filename);
 
+    void saveFavorites(const string& filename) const;
+    void loadFavorites(const string& filename);
 };
