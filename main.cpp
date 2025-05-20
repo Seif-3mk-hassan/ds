@@ -99,7 +99,7 @@ void saveMessages() {
 int main() {
     vector<User>& users = User::users;
     User* currentUser = nullptr;
-    int mainChoice;
+    char mainChoice;
     loadUsers();
     loadMessages();
 
@@ -107,7 +107,7 @@ int main() {
         cout << "\nMain Menu:\n";
         cout << "1. Register\n2. Login\n3. Exit\nChoice: ";
         cin >> mainChoice;
-
+        mainChoice= mainChoice - '0';
         if (mainChoice == 1) {
             string uname, pwd;
             cout << "Enter username: "; cin >> uname;
@@ -175,6 +175,7 @@ int main() {
                 cout << "9. Remove Contact\n";
                 cout << "10. Search for Contact\n";
                 cout << "11. Logout\n";
+                cout<<  "12. Send message to Group\n";
                 cout << "Choice: ";
                 cin >> choice;
                 cin.ignore();
@@ -269,6 +270,37 @@ int main() {
                     }
 
                 }
+                else if(choice==12){
+                    vector<Contact*>contacts;
+                    int num;
+                    cout<<"How Many do you want to send?\n";
+                    cin>>num;
+                    cout<<"Enter the Content : \n";
+                    string content;
+                    getline(cin,content);
+                    getline(cin, content);
+                    cout<<"Enter the Contacts\n";
+                    for (int i = 0; i < num; ++i) {
+                        string ids;
+                        cout << "ID: " << i << ": ";
+                        getline(cin,ids);
+                        currentUser->addContact(ids);
+                        contacts.push_back(currentUser->findContact(ids));
+                        currentUser->sendMessage(content, contacts[i]);
+                        if (contacts[i] == nullptr) { continue; }
+                        // Deliver to receiver if exists
+                        for (User& other : users) {
+                            if (other.getId() == ids) {
+                                Message msg;
+                                msg.senderID = currentUser->getId();
+                                msg.content = content;
+                                msg.receiverID = ids;
+                                other.receiveMessage(msg);
+                                break;
+                            }
+                        }
+                    }
+                }
             } while (choice != 11);
 
             currentUser = nullptr;
@@ -277,6 +309,10 @@ int main() {
         }
         else if (mainChoice == 3) {
             break;
+        }
+        else{
+            cout<<"Invalid choice\n";
+            continue;
         }
     }
     saveUsers();

@@ -3,6 +3,7 @@
 #include <stack>
 #include <queue>
 #include <map>
+#include<vector>
 #include "contact.h"
 #include "message.h"
 

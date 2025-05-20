@@ -16,7 +16,7 @@ string User::getId() const { return id; }
 string User::getUsername() const { return username; }
 string User::getPassword() const { return password; }
 
-void User::sendMessage(const string& content, Contact* contact) {
+void User::sendMessage(const string& content,Contact* contact) {
     if (contact == nullptr) {
         cout << "Error: Cannot send message. Contact does not exist or is hidden." << endl;
         return;
