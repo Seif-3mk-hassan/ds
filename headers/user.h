@@ -16,7 +16,7 @@ class User {
     
 
 public:
-    vector<Message> favorites;
+    queue<Message> favorites;
     static vector<User> users;
     stack<Message> sentMessages;
     map<string, Contact> contacts;
@@ -35,7 +35,7 @@ public:
     void undoMessage();
     void viewMessages();
     void viewMessageByContact(const string& contactID);
-    void addMessageToFavorites(const Message& msg);
+    void addMessageToFavorites();
     void removeOldestFavorite();
     void viewFavoriteMessages();
     void addContact(const string& id);

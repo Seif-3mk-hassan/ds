@@ -4,9 +4,9 @@
 #include <fstream>
 #include <algorithm>
 #include <map>
+#include <unordered_set>
 
 using namespace std;
-
 vector<User> User::users;
 
 User::User(string id, string username, string password)
@@ -22,7 +22,7 @@ void User::sendMessage(const string& content, Contact* contact) {
         return;
     }
 
-    Message msg{ id, contact->getId(), content };
+    Message msg{to_string(sentMessages.size()),id, contact->getId(), content };
     sentMessages.push(msg);
     contact->addMessage(msg);
 }
@@ -59,7 +59,7 @@ void User::viewMessages() {
     cout << "Sent messages:\n";
     while (!temp.empty()) {
         Message m = temp.top(); temp.pop();
-        cout << "To " << m.receiverID << ": " << m.content << endl;
+        cout << "To " << m.receiverID << ": " << m.content <<" Message ID "<<m.messageID<< endl;
     }
 
     // Show received messages (from contacts)
@@ -75,14 +75,14 @@ void User::viewMessageByContact(const string& contactID) {
             Message m = tempSent.top();
             tempSent.pop();
             if (m.receiverID == contactID) {
-                cout << m.senderID << " -> " << m.receiverID << ": " << m.content << endl;
+                cout << m.senderID << " -> " << m.receiverID << ": " << m.content <<" Message ID "<<m.messageID<< endl;
             }
         }
 
         cout << "Received messages from " << contactID << ":\n";
         for (const Message& m : contacts[contactID].getMessages()) {
             if (m.senderID == contactID) {
-                cout << m.senderID << " -> " << m.receiverID << ": " << m.content << endl;
+                cout << m.senderID << " -> " << m.receiverID << ": " << m.content <<" Message ID "<<m.messageID<< endl;
             }
         }
     }
@@ -97,19 +97,63 @@ void User::viewMessageByContact(const string& contactID) {
 
 
 
-void User::addMessageToFavorites(const Message& msg) {
-    favorites.push_back(msg);
-    
+void User::addMessageToFavorites() {
+    if (sentMessages.empty()) {
+        cout << "No messages to add to favorites." << endl;
+        return;
+    }
+    // Create a temporary stack to preserve the original sentMessages
+    stack<Message> tempStack = sentMessages;
+
+    // Track message IDs that are already in favorites
+    unordered_set<string> favoriteMsgIds;
+
+    // Build set of existing favorite message IDs
+    queue<Message> tempFavorites = favorites;
+    while (!tempFavorites.empty()) {
+        favoriteMsgIds.insert(tempFavorites.front().messageID);
+        tempFavorites.pop();
+    }
+
+    // Find the most recent unique message (not in favorites yet)
+    bool added = false;
+    Message messageToAdd;
+
+    // First, find the top message that isn't in favorites
+    while (!tempStack.empty() && !added) {
+        Message currentMsg = tempStack.top();
+        tempStack.pop();
+
+        // Check if this message is already in favorites
+        if (favoriteMsgIds.find(currentMsg.messageID) == favoriteMsgIds.end()) {
+            // Not in favorites yet, add it
+            messageToAdd = currentMsg;
+            favorites.push(messageToAdd);
+            cout << "Added message to favorites: \"" << messageToAdd.content << "\"" << endl;
+            added = true;
+        }
+    }
+
+    if (!added) {
+        cout << "No new unique messages to add to favorites." << endl;
+    }
 }
 
 void User::removeOldestFavorite() {
-    if (!favorites.empty()) favorites.erase(favorites.begin());
-
+    if (!favorites.empty()) favorites.pop();
 }
 
 void User::viewFavoriteMessages() {
-    for (const Message& m : favorites) {
-        cout << m.senderID << " -> " << m.receiverID << ": " << m.content << endl;
+    if (favorites.empty()) {
+        cout << "No favorite messages.\n";
+        return;
+    }
+    queue<Message> temp = favorites;  // copy queue to not modify original
+    cout << "Favorite messages:\n";
+    while (!temp.empty()) {
+        Message m = temp.front();
+        temp.pop();
+        cout << m.senderID << " -> " << m.receiverID << ": " << m.content <<" message ID "<<m.messageID<< endl;
     }
 }
 
@@ -178,6 +222,8 @@ void User::loadContactData(const string& filename) {
         string contactID = line;
         Contact contact(contactID);
 
+
+
         while (getline(in, line) && line != "--END--") {
             istringstream ss(line);
             string messageID, senderID, receiverID, content;
@@ -187,9 +233,12 @@ void User::loadContactData(const string& filename) {
             getline(ss, receiverID, '|');
             getline(ss, content);
 
-            Message msg(senderID, receiverID, content);
+
+
+            Message msg(to_string(sentMessages.size()),senderID, receiverID, content);
             msg.messageID = messageID;
             contact.addMessage(msg);
+
 
             // This is the fix:
             if (senderID == id) {
@@ -227,7 +276,9 @@ void User::clearAllData() {
     while (!sentMessages.empty()) sentMessages.pop();
 
     // Clear favorites vector
-    favorites.clear();
+    while (!favorites.empty()) {
+        favorites.pop();
+    }
 }
 
 

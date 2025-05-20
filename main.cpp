@@ -47,7 +47,7 @@ struct Node {
 };
 
 void loadUsers() {
-    ifstream in("C:\\Users\\seifd\\OneDrive\\Documents\\GitHub\\ds\\Users.txt");
+    ifstream in("C:/Users/Seif2/CLionProjects/ds2/Users.txt");
     User::users.clear();  // Clear existing users before loading new ones
     string id, user, pass;
     while (in >> id >> user >> pass) {
@@ -59,7 +59,7 @@ void loadUsers() {
 
 
 void saveUsers() {
-    ofstream out("C:\\Users\\seifd\\OneDrive\\Documents\\GitHub\\ds\\Users.txt");
+    ofstream out("C:/Users/Seif2/CLionProjects/ds2/Users.txt");
     if (!out) {
         cout << "Error opening Users.txt!" << endl;  // Check if file opened correctly
         return;
@@ -74,7 +74,7 @@ void saveUsers() {
 
 void loadMessages() {
     for (User& u : User::users) {
-        string filename = "C:\\Users\\seifd\\OneDrive\\Documents\\GitHub\\ds\\contacts_" + u.getId() + ".txt";
+        string filename = "C:/Users/Seif2/CLionProjects/ds2/contacts_" + u.getId() + ".txt";
         u.loadContactData(filename);
     }
 }
@@ -86,7 +86,7 @@ void loadMessages() {
 
 void saveMessages() {
     for (User& u : User::users) {
-        string filename = "C:\\Users\\seifd\\OneDrive\\Documents\\GitHub\\ds\\contacts_" + u.getId() + ".txt";
+        string filename = "C:/Users/Seif2/CLionProjects/ds2/contacts_" + u.getId() + ".txt";
         u.saveContactData(filename);
     }
     cout << "All contacts saved successfully.\n";
@@ -223,9 +223,8 @@ int main() {
                 }
                 else if (choice == 5) {                 //  Add to Favourites
                     if (!currentUser->sentMessages.empty()) {
-                        Message msg = currentUser->sentMessages.top();   
-                        currentUser->sentMessages.pop();                 
-                        currentUser->addMessageToFavorites(msg);         
+                        Message msg = currentUser->sentMessages.top();
+                        currentUser->addMessageToFavorites();
                         cout << "Message added to favorites.\n";
                     }
                     else {
