@@ -98,20 +98,21 @@ void User::viewMessageByContact(const string& contactID) {
 
 
 void User::addMessageToFavorites(const Message& msg) {
-    favorites.push(msg);
+    favorites.push_back(msg);
+    
 }
 
 void User::removeOldestFavorite() {
-    if (!favorites.empty()) favorites.pop();
+    if (!favorites.empty()) favorites.erase(favorites.begin());
+
 }
 
 void User::viewFavoriteMessages() {
-    queue<Message> temp = favorites;
-    while (!temp.empty()) {
-        Message m = temp.front(); temp.pop();
+    for (const Message& m : favorites) {
         cout << m.senderID << " -> " << m.receiverID << ": " << m.content << endl;
     }
 }
+
 
 void User::addContact(const string& contactID) {
     if (contacts.find(contactID) == contacts.end()) {
@@ -159,55 +160,78 @@ void User::saveUser(ofstream& out) {
     out << id << ' ' << username << ' ' << password << '\n';
 }
 
-void User::saveContactData(ofstream& out) {
-    for (const auto& pair : contacts) {
-        const string& cid = pair.first;
-        const Contact& contact = pair.second;
-        out << "CONTACT " << cid << " " << contact.isHidden() << '\n';
-        const vector<Message>& msgs = contact.getMessages();
-        for (const Message& m : msgs) {
-            out << m.senderID << " " << m.receiverID << " " << m.content << '\n';
-        }
+    
+
+
+void User::loadContactData(const string& filename) {
+    ifstream in(filename);
+    if (!in.is_open()) {
+        cout << "Contacts file not found.\n";
+        return;
     }
-}
 
-
-void User::loadContactData(ifstream& in) {
+    contacts.clear();
     string line;
     while (getline(in, line)) {
-        if (line.rfind("CONTACT ", 0) == 0) {
-            // Line starts with CONTACT: parse hidden status
-            istringstream iss(line);
-            string tag, contactId;
-            bool hidden;
-            iss >> tag >> contactId >> hidden;
-            addContact(contactId);
-            contacts[contactId].setHidden(hidden);
-        }
-        else {
-            // It's a message line: parse and load message
-            istringstream iss(line);
-            string senderId, receiverId;
-            iss >> senderId >> receiverId;
-            string msg;
-            getline(iss, msg); // the rest is the message content
-            if (!msg.empty() && msg[0] == ' ') msg.erase(0, 1);
+        if (line.empty()) continue;
 
+        string contactID = line;
+        Contact contact(contactID);
 
-            Message m{ senderId, receiverId, msg };
+        while (getline(in, line) && line != "--END--") {
+            istringstream ss(line);
+            string messageID, senderID, receiverID, content;
 
-            if (senderId == this->id) {
-                addContact(receiverId);
-                sentMessages.push(m);
-                contacts[receiverId].addMessage(m);
-            }
-            else if (receiverId == this->id) {
-                addContact(senderId);
-                contacts[senderId].addMessage(m);
+            getline(ss, messageID, '|');
+            getline(ss, senderID, '|');
+            getline(ss, receiverID, '|');
+            getline(ss, content);
+
+            Message msg(senderID, receiverID, content);
+            msg.messageID = messageID;
+            contact.addMessage(msg);
+
+            // This is the fix:
+            if (senderID == id) {
+                sentMessages.push(msg); // Rebuild sentMessages stack
             }
         }
+
+        contacts[contactID] = contact;
     }
 }
+
+void User::saveContactData(const string& filename) const {
+    ofstream out(filename);
+    if (!out.is_open()) {
+        cout << "Failed to open file for saving contacts.\n";
+        return;
+    }
+
+    for (const auto& pair : contacts) {
+        const Contact& contact = pair.second;
+        out << contact.getId() << "\n";
+        for (const Message& msg : contact.getMessages()) {
+            out << msg.messageID << "|" << msg.getSenderId() << "|" << msg.getReceiverId() << "|" << msg.getContent() << "\n";
+        }
+        out << "--END--\n";
+    }
+
+    out.close();
+}
+
+void User::clearAllData() {
+    contacts.clear();
+
+    // Clear sentMessages stack
+    while (!sentMessages.empty()) sentMessages.pop();
+
+    // Clear favorites vector
+    favorites.clear();
+}
+
+
+
 
 
 

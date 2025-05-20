@@ -12,15 +12,19 @@ class User {
     string id;
     string username;
     string password;
-    map<string, Contact> contacts;
-    queue<Message> favorites;
+   
+    
 
 public:
+    vector<Message> favorites;
     static vector<User> users;
     stack<Message> sentMessages;
-
+    map<string, Contact> contacts;
     User() {}
     User(string id, string username, string password);
+    void loadContactData(istream& in);
+    void saveContactData(ostream& out) const;
+    void clearAllData();
 
     string getId() const;
     string getUsername() const;
@@ -38,8 +42,9 @@ public:
     bool removeContact(const string& id);
     Contact* findContact(const string& id);
     void displayContactsByMessageCount();
-
+    void clearSessionData();   // declaration
     void saveUser(ofstream& out);
-    void loadContactData(ifstream& in);
-    void saveContactData(ofstream& out);
+    void loadContactData(const string& filename);
+    void saveContactData(const string& filename) const;
+
 };

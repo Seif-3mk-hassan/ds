@@ -73,21 +73,27 @@ void saveUsers() {
 }
 
 void loadMessages() {
-    ifstream in("C:\\Users\\seifd\\OneDrive\\Documents\\GitHub\\ds\\contact.txt");
-    for (auto& u : User::users) {
-        u.loadContactData(in);
-        in.clear(); in.seekg(0); // rewind for next user
+    for (User& u : User::users) {
+        string filename = "C:\\Users\\seifd\\OneDrive\\Documents\\GitHub\\ds\\contacts_" + u.getId() + ".txt";
+        u.loadContactData(filename);
     }
-    in.close();
 }
 
+
+
+
+
+
 void saveMessages() {
-    ofstream out("C:\\Users\\seifd\\OneDrive\\Documents\\GitHub\\ds\\contact.txt");
-    for (auto& u : User::users) {
-        u.saveContactData(out);
+    for (User& u : User::users) {
+        string filename = "C:\\Users\\seifd\\OneDrive\\Documents\\GitHub\\ds\\contacts_" + u.getId() + ".txt";
+        u.saveContactData(filename);
     }
-    out.close();
+    cout << "All contacts saved successfully.\n";
 }
+
+
+
 
 
 int main() {
