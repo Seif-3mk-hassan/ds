@@ -5,8 +5,8 @@ using json = nlohmann::json;
 
 Message::Message() : messageID(""), senderID(""), receiverID(""), content("") {}
 
-Message::Message(const string& sender, const string& receiver, const string& content)
-    : senderID(sender), receiverID(receiver), content(content), messageID("") {}
+Message::Message(const string& ID,const string& sender, const string& receiver, const string& content)
+: messageID(ID),senderID(sender), receiverID(receiver), content(content) {}
 
 bool Message::isFavorite() {
     return false;  // You can implement this logic as needed
